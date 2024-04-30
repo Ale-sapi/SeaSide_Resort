@@ -10,7 +10,8 @@ package com.mycompany.seaside_resort;
  */
 public class SeaSide_Resort {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         System.out.println("Hello World!");
     }
 }

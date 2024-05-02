@@ -10,7 +10,8 @@ package com.mycompany.seaside_resort;
  */
 public class Camera 
 {
-    private int numeroCamera;
+    private final int numeroCamera;
+    private static int numsuccessivo=1;
     private int numeroLetti;
     private float prezzo;
     private String livello;
@@ -20,9 +21,12 @@ public class Camera
     private boolean tv;
     private boolean cassaforte;
 
-    public Camera(int numeroCamera, int numeroLetti, float prezzo, String livello, String vista, String Esterno, boolean disponibile, boolean tv, boolean cassaforte) 
+    public Camera(int numeroLetti, float prezzo, String livello, String vista, String Esterno, boolean disponibile, boolean tv, boolean cassaforte) 
     {
-        this.numeroCamera = numeroCamera;
+        if (numsuccessivo==17||numsuccessivo==13||numsuccessivo==113||numsuccessivo==117)
+            numsuccessivo++;
+        this.numeroCamera = numsuccessivo;
+        numsuccessivo++;
         this.numeroLetti = numeroLetti;
         this.prezzo = prezzo;
         this.livello = livello;
@@ -49,11 +53,6 @@ public class Camera
     public int getNumeroCamera() 
     {
         return numeroCamera;
-    }
-
-    public void setNumeroCamera(int numeroCamera) 
-    {
-        this.numeroCamera = numeroCamera;
     }
 
     public int getNumeroLetti() 

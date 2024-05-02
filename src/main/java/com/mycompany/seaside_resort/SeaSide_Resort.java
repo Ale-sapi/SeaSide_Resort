@@ -5,8 +5,6 @@
 package com.mycompany.seaside_resort;
 
 import Input.ConsoleInput;
-import eccezioni.FileException;
-import java.io.IOException;
 import menu.Menu;
 
 /**
@@ -29,17 +27,17 @@ public class SeaSide_Resort {
         String nomeFile="prenotazioni.csv";
         String nomeFileBinario="prenotazioni.bin";
         
-        vociMenu[0]="\t--> Esci";
-        vociMenu[1]="\t--> Visualizza tutti i volumi presenti";
-        vociMenu[2]="\t--> Aggiungi volume";
-        vociMenu[3]="\t--> Visualizza volume (ripiano, posizione) ";
-        vociMenu[4]="\t--> Elimina volume (ripiano, posizione)";
-        vociMenu[5]="\t--> Mostra libri di un autore";
-        vociMenu[6]="\t--> Mostra libri presenti in ordine alfabetico di titolo";
-        vociMenu[7]="\t--> Esporta i volumi su file CSV";
-        vociMenu[8]="\t--> Importa i volumi da file CSV";
-        vociMenu[9]="\t--> Salva dati scaffale";
-        vociMenu[10]="\t--> Carica dati scaffale";
+        vociMenu[0]="\t-->";
+        vociMenu[1]="\t-->";
+        vociMenu[2]="\t-->";
+        vociMenu[3]="\t-->";
+        vociMenu[4]="\t-->";
+        vociMenu[5]="\t-->";
+        vociMenu[6]="\t-->";
+        vociMenu[7]="\t-->";
+        vociMenu[8]="\t-->";
+        vociMenu[9]="\t-->";
+        vociMenu[10]="\t-->";
         
         menu=new Menu(vociMenu);
        
@@ -52,7 +50,11 @@ public class SeaSide_Resort {
             switch (voceScelta) 
             {
                 case 0:
-                    
+                    Gestione G1=new Gestione();
+                    camera=new Camera(2, 2000, "Superior", "Piscina", "Terrazzo", true, true, true);
+                    G1.aggiungiCamera(camera);
+                    Camera cm1=new Camera(G1.cercaCamera(1));
+                    G1.rimuoviCamera(1);
                     break;
                     
                 case 1:

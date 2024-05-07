@@ -16,7 +16,7 @@ public class Prenotazione
     private static int numsuccessivo=1;
     private int numeroOspiti;
     private int numeroCamera;
-    private float prezzo;
+    private float prezzo=0;
     private String nomeCliente;
     private String trattamento;
     private String statoPrenotazione;
@@ -34,7 +34,7 @@ public class Prenotazione
     private int giornoOUT;
     LocalDate checkOUT=LocalDate.of(annoOUT, meseOUT, giornoOUT);
 
-    public Prenotazione(int numeroOspiti, float prezzo, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) 
+    public Prenotazione(int numeroOspiti, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) 
     {
         this.idPrenotazione = numsuccessivo;
         numsuccessivo++;
@@ -51,10 +51,12 @@ public class Prenotazione
         this.annoIN = annoIN;
         this.meseIN = meseIN;
         this.giornoIN = giornoIN;
+        checkIN=LocalDate.of(annoIN, meseIN, giornoIN);
         this.annoOUT = annoOUT;
         this.meseOUT = meseOUT;
         this.giornoOUT = giornoOUT;
         this.numeroCamera=0;
+        checkOUT=LocalDate.of(annoOUT, meseOUT, giornoOUT);
     }
 
     public int getIdPrenotazione() {

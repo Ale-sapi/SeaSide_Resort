@@ -17,7 +17,6 @@ public class Camera
     private final int numeroCamera;
     private static int numsuccessivo=1;
     private int numeroLetti;
-    private float prezzo;
     private String livello;
     private String vista;
     private String Esterno;//Terrazzo o Giardino
@@ -25,14 +24,13 @@ public class Camera
     private boolean tv;
     private boolean cassaforte;
 
-    public Camera(int numeroLetti, float prezzo, String livello, String vista, String Esterno, boolean disponibile, boolean tv, boolean cassaforte) 
+    public Camera(int numeroLetti, String livello, String vista, String Esterno, boolean disponibile, boolean tv, boolean cassaforte) 
     {
         if (numsuccessivo==17||numsuccessivo==13||numsuccessivo==113||numsuccessivo==117)
             numsuccessivo++;
         this.numeroCamera = numsuccessivo;
         numsuccessivo++;
         this.numeroLetti = numeroLetti;
-        this.prezzo = prezzo;
         this.livello = livello;
         this.vista = vista;
         this.Esterno = Esterno;
@@ -44,7 +42,6 @@ public class Camera
     {
         this.numeroCamera = camera.getNumeroCamera();
         this.numeroLetti = camera.getNumeroLetti();
-        this.prezzo = camera.getPrezzo();
         this.livello = camera.getLivello();
         this.vista = camera.getVista();
         this.Esterno = camera.getEsterno();
@@ -54,7 +51,7 @@ public class Camera
         this.disponibile=camera.getDisponibilita();
     }
     
-    public void modificaCamera(int numeroLetti, float prezzo, String livello, boolean tv, boolean cassaforte, boolean disponibile) 
+    public void modificaCamera(int numeroLetti, String livello, boolean tv, boolean cassaforte, boolean disponibile) 
     {
         setNumeroLetti(numeroLetti);
         setLivello(livello);
@@ -81,16 +78,6 @@ public class Camera
     public void setNumeroLetti(int numeroLetti) 
     {
         this.numeroLetti = numeroLetti;
-    }
-
-    public float getPrezzo() 
-    {
-        return prezzo;
-    }
-
-    public void setPrezzo(float prezzo) 
-    {
-        this.prezzo = prezzo;
     }
 
     public String getLivello() {
@@ -174,7 +161,7 @@ public class Camera
     @Override
     public String toString() 
     {
-        return "Camera{" + "numeroCamera=" + numeroCamera + ", numeroLetti=" + numeroLetti + ", prezzo=" + prezzo + ", livello=" + livello + ", vista=" + vista + ", Esterno=" + Esterno + ", disponibile=" + disponibile + ", tv=" + tv + ", cassaforte=" + cassaforte + '}';
+        return "Camera{" + "numeroCamera=" + numeroCamera + ", numeroLetti=" + numeroLetti + ", livello=" + livello + ", vista=" + vista + ", Esterno=" + Esterno + ", disponibile=" + disponibile + ", tv=" + tv + ", cassaforte=" + cassaforte + '}';
     }
     
     

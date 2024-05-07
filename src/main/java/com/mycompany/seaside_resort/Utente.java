@@ -49,4 +49,11 @@ public class Utente
     {
         this.ruolo = ruolo;
     }
+
+    @Override
+    public String toString() 
+    {
+        return "Utente{" + "username=" + username + ", password=" + password + ", ruolo=" + ruolo + '}';
+    }
+    
 }

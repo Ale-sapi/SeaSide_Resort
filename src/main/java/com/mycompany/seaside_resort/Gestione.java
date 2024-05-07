@@ -114,14 +114,26 @@ public class Gestione
         return null;
     }
 //Todo: Eccezione prenotazione non trovata o prenotazione null
-    public void approvaRifiutaPrenotazione(int id, String nuovoStato)
+    public void approvaRifiutaPrenotazione(int id, String nuovoStato, boolean approvato)
     {
         Prenotazione p1=cercaPrenotazione(id);
-        Camera cameraDisponibile = cercaPrimaCameraDisponibile(p1);
-        p1.setNumeroCamera(cameraDisponibile.getNumeroCamera());
-        p1.setStatoPrenotazione(nuovoStato);
-        cameraDisponibile.aggiungiPrenotazione(p1);
-        
+        if (approvato==true)
+        {
+            Camera cameraDisponibile = cercaPrimaCameraDisponibile(p1);
+            if (cameraDisponibile!=null)
+            {
+                p1.setNumeroCamera(cameraDisponibile.getNumeroCamera());
+                p1.setStatoPrenotazione("Approvata");
+                cameraDisponibile.aggiungiPrenotazione(p1);
+            }
+            else 
+                System.out.println("Errore: Nessuna camera disponibile");
+                p1.setStatoPrenotazione("Rifiutata: Camera non trovata");
+        }
+        else
+        {
+            p1.setStatoPrenotazione(nuovoStato);
+        }
         System.out.println("Stato aggiornato");
     }
 //Todo: Eccezione prenotazione non trovata o prenotazione null
@@ -135,35 +147,43 @@ public class Gestione
     }
     
     // Metodo per ordinare le prenotazioni per data di check-in
-    public void ordinaPrenotazioniPerCheckIn(List<Prenotazione> prenotazioni) 
+    public List<Prenotazione> ordinaPrenotazioniPerCheckIn() 
     {
-        Collections.sort(prenotazioni, Comparator.comparing(prenotazione -> prenotazione.getCheckIN()));
+        List<Prenotazione> copiaPrenotazioni = new ArrayList<>(prenotazioni);
+        Collections.sort(copiaPrenotazioni, Comparator.comparing(prenotazione -> prenotazione.getCheckIN()));
+        return copiaPrenotazioni;
     }
     
     // Metodo per ordinare le prenotazioni per nome del cliente
-    public void ordinaPrenotazioniPerNomeCliente(List<Prenotazione> prenotazioni) 
+    public List<Prenotazione> ordinaPrenotazioniPerNomeCliente() 
     {
-    Collections.sort(prenotazioni, Comparator.comparing(prenotazione -> prenotazione.getNomeCliente()));
+        List<Prenotazione> copiaPrenotazioni = new ArrayList<>(prenotazioni);
+        Collections.sort(copiaPrenotazioni, Comparator.comparing(prenotazione -> prenotazione.getNomeCliente()));
+        return copiaPrenotazioni;
     }
     
     // Metodo per ordinare le camere per livello
-    public void ordinaCamerePerLivello(List<Camera> camere) 
+    public List<Camera> ordinaCamerePerLivello() 
     {
-    Collections.sort(camere, Comparator.comparing(camera -> camera.getLivello()));
+        List<Camera> copiaCamere = new ArrayList<>(camere);
+        Collections.sort(copiaCamere, Comparator.comparing(camera -> camera.getLivello()));
+        return copiaCamere;
     }
 
     // Metodo per ordinare le camere per numero di letti
-    public void ordinaCamerePerNumeroLetti(List<Camera> camere) 
+    public List<Camera> ordinaCamerePerNumeroLetti() 
     {
-    Collections.sort(camere, Comparator.comparingInt(camera -> camera.getNumeroLetti()));
+        List<Camera> copiaCamere = new ArrayList<>(camere);
+        Collections.sort(copiaCamere, Comparator.comparingInt(camera -> camera.getNumeroLetti()));
+        return copiaCamere;
     }  
 
-    public  void restrutturaCamera(int numeroCamera, int numeroLetti, float prezzo, String livello, boolean tv, boolean cassaforte, boolean disponibile)
+    public  void restrutturaCamera(int numeroCamera, int numeroLetti, String livello, boolean tv, boolean cassaforte, boolean disponibile)
     {
         Camera camera = cercaCamera(numeroCamera);
         if (camera != null) 
         {
-            camera.modificaCamera(numeroLetti, prezzo, livello, tv, cassaforte, disponibile);
+            camera.modificaCamera(numeroLetti, livello, tv, cassaforte, disponibile);
             System.out.println("Camera modificata con successo.");
         } 
         else 
@@ -172,7 +192,7 @@ public class Gestione
         }
     }
     
-    public void modificaPrenotazione(int idPrenotazione, int numeroOspiti, float prezzo, String trattamento, String statoPrenotazione, String livello, String vista, String esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) 
+    public void modificaPrenotazione(int idPrenotazione, int numeroOspiti, float prezzo, String trattamento, String livello, String vista, String esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) 
     {
         Prenotazione prenotazione = cercaPrenotazione(idPrenotazione);
         if (prenotazione != null) 
@@ -180,7 +200,6 @@ public class Gestione
             prenotazione.setNumeroOspiti(numeroOspiti);
             prenotazione.setPrezzo(prezzo);
             prenotazione.setTrattamento(trattamento);
-            prenotazione.setStatoPrenotazione(statoPrenotazione);
             prenotazione.setLivello(livello);
             prenotazione.setVista(vista);
             prenotazione.setEsterno(esterno);
@@ -200,5 +219,17 @@ public class Gestione
         {
             System.out.println("Prenotazione non trovata.");
         }
+    }
+    
+    public Prenotazione cercaPrimaPrenotazioneDaApprovare()
+    {
+        for (Prenotazione prenotazione : prenotazioni) 
+        {
+            if (prenotazione.getStatoPrenotazione()=="In Approvazione") 
+                {
+                    return prenotazione;
+                }
+        }
+        return null;
     }
 }

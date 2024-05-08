@@ -161,6 +161,8 @@ public class App
             System.out.println("15. Approva o rifiuta una prenotazione");
             System.out.println("16. Promuovi dipendente");
             System.out.println("0. Logout");
+            
+            System.out.print("\nScelta: ");
             int scelta = consoleInput.readInt();
             switch (scelta) 
             {
@@ -250,6 +252,8 @@ public class App
             System.out.println("10. Modifica una prenotazione");
             System.out.println("11. Approva o rifiuta una prenotazione");
             System.out.println("0. Logout");
+            
+            System.out.print("\nScelta: ");
             int scelta = consoleInput.readInt();
             switch (scelta) 
             {
@@ -317,6 +321,9 @@ public class App
             System.out.println("1. Effettua una Prenotazione");
             System.out.println("2. Modifica una prenotazione");
             System.out.println("0. Logout");
+            
+            
+            System.out.print("\nScelta: ");
             int scelta = consoleInput.readInt();
             switch (scelta) 
             {
@@ -349,7 +356,7 @@ public class App
     {
     try {
         Prenotazione p1;
-        System.out.println("Modifica prenotazione:");
+        System.out.println("\nModifica prenotazione:\n");
         if (utenteAttuale.getRuolo()=="CEO"||utenteAttuale.getRuolo()=="DIPENDENTE")
         {
             System.out.println("Inserisci l'ID o il nome della prenotazione da modificare: ");
@@ -530,7 +537,7 @@ public class App
     {
         try 
         {
-            System.out.println("Modifica camera:");
+            System.out.println("\nModifica camera:\n");
             System.out.println("Inserisci il numero della camera da modificare: ");
             int numeroCamera = consoleInput.readInt();
             Camera camera = gestione.cercaCamera(numeroCamera);
@@ -606,7 +613,7 @@ public class App
     {
         try 
         {
-            System.out.println("Blocca camera:");
+            System.out.println("\nBlocca camera:\n");
             System.out.println("Inserisci il numero della camera da modificare: ");
             int numeroCamera = consoleInput.readInt();
             Camera camera = gestione.cercaCamera(numeroCamera);
@@ -624,7 +631,7 @@ public class App
     private static void prenotaCamera(String nome) 
     {
     try {
-        System.out.println("Prenota una camera:");
+        System.out.println("\nPrenota una camera:\n");
                
         System.out.print("Inserisci il numero di ospiti: ");
         int numeroOspiti = consoleInput.readInt();
@@ -761,11 +768,9 @@ public class App
     {
         try 
         {
+            System.out.println("\nAggiungi una Camera\n");
             System.out.print("Inserisci il numero di letti della nuova camera: ");
             int numeroLetti = consoleInput.readInt();
-
-            System.out.print("Inserisci il prezzo della nuova camera: ");
-            float prezzo = consoleInput.readFloat();
 
             System.out.print("Inserisci il livello della nuova camera: ");
             String livello = consoleInput.readString();
@@ -811,6 +816,7 @@ public class App
     
     private static void rimuoviCamera()
     {
+        System.out.println("\nRimuovi una camera\n");
         System.out.println("Inserire il numero della camera che si vuole eliminare");
         int numero;
         try 
@@ -833,6 +839,7 @@ public class App
     {
         try 
         {
+            System.out.println("\nCerca una camera\n");
             System.out.println("Inserire il numero della camera che si vuole cercare");
             int numero=consoleInput.readInt();
             Camera cam1;
@@ -852,6 +859,7 @@ public class App
     
     private static void visualizzaPrenotazioniPerNomeCliente() 
     {
+        System.out.println("\nVisualizza Prenotazioni Per Nome Cliente\n");
         ArrayList<Prenotazione>pren;
         pren = (ArrayList<Prenotazione>) gestione.ordinaPrenotazioniPerNomeCliente();
         for (Prenotazione prenotazione : pren)
@@ -862,6 +870,7 @@ public class App
     
     private static void visualizzaPrenotazioniPerCheckIN() 
     {
+        System.out.println("\nVisualizza Prenotazioni Per CheckIN\n");
         ArrayList<Prenotazione>pren;
         pren = (ArrayList<Prenotazione>) gestione.ordinaPrenotazioniPerCheckIn();
         for (Prenotazione prenotazione : pren)
@@ -872,6 +881,7 @@ public class App
 
     private static void visualizzaCamerePerNumeroLetti() 
     {
+        System.out.println("\nVisualizza Camere Per Numero Letti\n");
         ArrayList<Camera>cam;
         cam = (ArrayList<Camera>) gestione.ordinaCamerePerNumeroLetti();
         for (Camera camera : cam)
@@ -881,6 +891,7 @@ public class App
     }
     private static void visualizzaCamerePerLivello() 
     {
+        System.out.println("\nVisualizza Camere Per Livello\n");
         ArrayList<Camera>cam;
         cam = (ArrayList<Camera>) gestione.ordinaCamerePerLivello();
         for (Camera camera : cam)
@@ -892,6 +903,7 @@ public class App
     {
         try 
         {
+            System.out.println("\nPromuovi un dipendente\n");
             System.out.println("Inserire lo UserName del dipendente");
             String Name=consoleInput.readString();
             for (Utente utente : utenti)
@@ -903,6 +915,7 @@ public class App
                     do
                     {
                         System.out.println("Inserisci il tipo di promozione");
+                        System.out.println("\n1:CLIENTE\n2:DIPENDENTE\n3:CEO");
                         promozione=consoleInput.readInt();
                     }while (promozione!=1||promozione!=2||promozione!=3);
                     switch (promozione) 
@@ -938,6 +951,7 @@ public class App
     {
         try 
         {
+            System.out.println("\nRimuovi una prenotazione\n");
             System.out.println("Inserisci l'ID o il nome della prenotazione da modificare: ");
             String input = consoleInput.readString();
             Prenotazione p1;
@@ -966,6 +980,7 @@ public class App
     {
         try 
         {
+            System.out.println("\nCerca una prenotazione\n");
             System.out.println("Inserire l'id della prenotazione che si vuole cercare");
             int numero=consoleInput.readInt();
             Prenotazione p1;
@@ -987,6 +1002,7 @@ public class App
     {
         try 
         {
+            System.out.println("\nCerca una prenotazione con il nome del cliente\n");
             System.out.println("Inserire il nome del cliente che ha prenotato");
             String nome=consoleInput.readString();
             Prenotazione p1;
@@ -1008,7 +1024,7 @@ public class App
     {
         try
         {
-            System.out.println("Approva o Rifiuta Prenotazione");
+            System.out.println("\nApprova o Rifiuta Prenotazione\n");
             System.out.println("Inserisci il numero della prenotazione oppure premi invio per cercare la prima disponibile");
             String inputID = consoleInput.readString();
                 int ID;

@@ -5,6 +5,7 @@
 package com.mycompany.seaside_resort;
 
 import Input.ConsoleInput;
+import eccezioni.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
@@ -12,10 +13,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- *
- * @author Alessandro
+ * Classe che gestisce le operazioni del resort.
+ * Questa classe fornisce metodi per gestire le camere e le prenotazioni del resort.
+ * Inoltre, fornisce metodi per effettuare operazioni come aggiungere, rimuovere, cercare e ordinare camere e prenotazioni.
+ * Gli oggetti di questa classe rappresentano il sistema di gestione del resort.
+ * I metodi di questa classe consentono di gestire le camere e le prenotazioni del resort.
+ * Gli oggetti di questa classe vengono utilizzati per eseguire operazioni come aggiungere, rimuovere, cercare e ordinare camere e prenotazioni.
+ * Questa classe rappresenta il sistema di gestione del resort.
  */
 public class Gestione 
 {
@@ -30,7 +38,13 @@ public class Gestione
     
     ArrayList<Camera>camere=new ArrayList<>();
     ArrayList<Prenotazione>prenotazioni=new ArrayList<>();
-    public void aggiungiCamera(Camera camera)
+    
+    /**
+     * Aggiunge una nuova camera al resort.
+     * @param camera La camera da aggiungere.
+     * @throws EccezioneNumeroMaxCamereRaggiunto Viene lanciata se il numero massimo di camere è stato raggiunto.
+     */
+    public void aggiungiCamera(Camera camera) throws EccezioneNumeroMaxCamereRaggiunto
     {
         if (numCamere<=MAX_CAMERE)
         {
@@ -39,28 +53,54 @@ public class Gestione
             System.out.println("Camera numero"+camera.getNumeroCamera()+"Aggiunta");
         }
         else
-            System.out.println("Non Funzia");
-//Todo: Eccezione num max camere
+            throw new EccezioneNumeroMaxCamereRaggiunto();
     }
-    public void rimuoviCamera (int numCamera)
+    
+    /**
+     * Rimuove una camera dal resort.
+     * @param numCamera Il numero della camera da rimuovere.
+     * @throws EccezioneCameraNonTrovata Viene lanciata se la camera specificata non è stata trovata.
+     */
+    public void rimuoviCamera (int numCamera) throws EccezioneCameraNonTrovata
     {
-        camere.remove(cercaCamera(numCamera));
-        numCamere--;
-        System.out.println("rimossa");
+        Camera camera = cercaCamera(numCamera);
+        if (camera != null) 
+        {
+            camere.remove(camera);
+            numCamere--;
+            System.out.println("Camera rimossa.");
+        } 
+        else 
+        {
+            throw new EccezioneCameraNonTrovata();
+        }
     }
-//Todo: Eccezione camera non trovata o camera null
-    public Camera cercaCamera(int numero)
+    
+    /**
+     * Cerca una camera per numero.
+     * @param numero Il numero della camera da cercare.
+     * @return La camera corrispondente al numero specificato.
+     * @throws EccezioneCameraNonTrovata Viene lanciata se la camera specificata non è stata trovata.
+     */
+    public Camera cercaCamera(int numero) throws EccezioneCameraNonTrovata
     {
-        for (Camera camera : camere) {
+        for (Camera camera : camere) 
+        {
         if (camera.getNumeroCamera()==numero) 
             {
                 return camera;
             }
         }
-        return null;
+        throw new EccezioneCameraNonTrovata();
     }
-//Todo: Eccezione camera non trovata o camera null
-    public Camera cercaPrimaCameraDisponibile(Prenotazione prenotazione)
+    
+    /**
+     * Cerca la prima camera disponibile per una prenotazione.
+     * @param prenotazione La prenotazione per cui cercare una camera disponibile.
+     * @return La prima camera disponibile per la prenotazione specificata.
+     * @throws EccezioneCameraNonTrovata Viene lanciata se non viene trovata una camera disponibile per la prenotazione.
+     */
+    public Camera cercaPrimaCameraDisponibile(Prenotazione prenotazione) throws EccezioneCameraNonTrovata
     {
         for (Camera camera : camere) 
         {
@@ -70,10 +110,15 @@ public class Gestione
                         return camera;
                 }
         }
-        return null;
+        throw new EccezioneCameraNonTrovata();
     }
-//Todo: Eccezione camera non trovata o camera null
-    public void Prenota(Prenotazione prenotazione)
+    
+    /**
+     * Prenota una nuova prenotazione.
+     * @param prenotazione La prenotazione da aggiungere.
+     * @throws EccezioneNumeroMaxPrenotazioniRaggiunto Viene lanciata se il numero massimo di prenotazioni è stato raggiunto.
+     */
+    public void Prenota(Prenotazione prenotazione) throws EccezioneNumeroMaxPrenotazioniRaggiunto
     {
         if (numPrenotazioni<=MAX_PRENOTAZIONI)
         {
@@ -82,17 +127,36 @@ public class Gestione
             System.out.println("Prenotazione numero"+prenotazione.getIdPrenotazione()+"Aggiunta");
         }
         else
-            System.out.println("Non Funzia");
+            throw new EccezioneNumeroMaxPrenotazioniRaggiunto();
     }
-//Todo: Eccezione num max prenotazioni
-        public void rimuoviPrenotazione (int idPrenotazione)
+    
+    /**
+     * Rimuove una prenotazione dal resort.
+     * @param idPrenotazione L'ID della prenotazione da rimuovere.
+     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     */
+    public void rimuoviPrenotazione (int idPrenotazione) throws EccezionePrenotazioneNonTrovata
     {
-        prenotazioni.remove(cercaPrenotazione(idPrenotazione));
-        numPrenotazioni--;
-        System.out.println("rimossa");
+        Prenotazione prenotazione = cercaPrenotazione(idPrenotazione);
+        if (prenotazione != null) 
+        {
+            prenotazioni.remove(prenotazione);
+            numPrenotazioni--;
+            System.out.println("Prenotazione rimossa.");
+        } 
+        else 
+        {
+            throw new EccezionePrenotazioneNonTrovata();
+        }
     }
-//Todo: Eccezione prenotazione non trovata o prenotazione null
-    public Prenotazione cercaPrenotazione(int Id)
+    
+    /**
+     * Cerca una prenotazione per ID.
+     * @param Id L'ID della prenotazione da cercare.
+     * @return La prenotazione corrispondente all'ID specificato.
+     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     */
+    public Prenotazione cercaPrenotazione(int Id) throws EccezionePrenotazioneNonTrovata
     {
         for (Prenotazione prenotazione : prenotazioni) 
         {
@@ -101,14 +165,21 @@ public class Gestione
                     return prenotazione;
                 }
         }
-        return null;
+        throw new EccezionePrenotazioneNonTrovata();
     }
-//Todo: Eccezione prenotazione non trovata o prenotazione null
-    public Prenotazione cercaPrenotazioneNomeCliente(String nome) throws IOException
+    
+    /**
+     * Cerca una prenotazione per nome cliente.
+     * @param nome Il nome del cliente associato alla prenotazione da cercare.
+     * @return La prenotazione corrispondente al nome cliente specificato.
+     * @throws IOException Viene lanciata se si verifica un errore di input/output.
+     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     */
+    public Prenotazione cercaPrenotazioneNomeCliente(String nome) throws IOException, EccezionePrenotazioneNonTrovata
     {
         for (Prenotazione prenotazione : prenotazioni) 
         {
-            if (prenotazione.getNomeCliente()==nome) 
+            if (prenotazione.getNomeCliente().equals(nome)) 
                 {
                     prenotazione.toString();
                     System.out.println("è questa la prenotazione che cercavi?");
@@ -119,32 +190,45 @@ public class Gestione
                     
                 }
         }
-        return null;
+         throw new EccezionePrenotazioneNonTrovata();
     }
-//Todo: Eccezione prenotazione non trovata o prenotazione null
-    public void approvaRifiutaPrenotazione(int id, String nuovoStato, boolean approvato)
+    
+    /**
+     * Approva o rifiuta una prenotazione.
+     * @param id L'ID della prenotazione da approvare o rifiutare.
+     * @param nuovoStato Il nuovo stato della prenotazione.
+     * @param approvato True se la prenotazione è approvata, false altrimenti.
+     * @throws EccezioneCameraNonTrovata Viene lanciata se non viene trovata una camera per la prenotazione approvata.
+     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     */
+    public void approvaRifiutaPrenotazione(int id, String nuovoStato, boolean approvato) throws EccezionePrenotazioneNonTrovata
     {
         Prenotazione p1=cercaPrenotazione(id);
-        if (approvato==true)
+        if(p1 != null)
         {
-            Camera cameraDisponibile = cercaPrimaCameraDisponibile(p1);
-            if (cameraDisponibile!=null)
+            if (approvato==true)
             {
-                p1.setNumeroCamera(cameraDisponibile.getNumeroCamera());
-                p1.setStatoPrenotazione("Approvata");
-                cameraDisponibile.aggiungiPrenotazione(p1);
+                try {
+                    Camera cameraDisponibile = cercaPrimaCameraDisponibile(p1);
+                    p1.setNumeroCamera(cameraDisponibile.getNumeroCamera());
+                    p1.setStatoPrenotazione("Approvata");
+                    cameraDisponibile.aggiungiPrenotazione(p1);
+                    } 
+                catch (EccezioneCameraNonTrovata ex) 
+                {
+                    System.out.println("Errore: Nessuna camera disponibile");
+                    p1.setStatoPrenotazione("Rifiutata: Camera non trovata");
+                }
             }
-            else 
-                System.out.println("Errore: Nessuna camera disponibile");
-                p1.setStatoPrenotazione("Rifiutata: Camera non trovata");
+            else
+            {
+                p1.setStatoPrenotazione(nuovoStato);
+            }
+            System.out.println("Stato aggiornato");
         }
         else
-        {
-            p1.setStatoPrenotazione(nuovoStato);
-        }
-        System.out.println("Stato aggiornato");
+            throw new EccezionePrenotazioneNonTrovata();
     }
-//Todo: Eccezione prenotazione non trovata o prenotazione null
 
     public static int getNumCamere() {
         return numCamere;
@@ -186,21 +270,50 @@ public class Gestione
         return copiaCamere;
     }  
 
-    public  void restrutturaCamera(int numeroCamera, int numeroLetti, String livello, boolean tv, boolean cassaforte, boolean disponibile)
+    /**
+     * Modifica i dettagli di una camera esistente.
+     * @param numeroCamera Il numero della camera da modificare.
+     * @param numeroLetti Il nuovo numero di letti della camera.
+     * @param livello Il nuovo livello della camera.
+     * @param tv True se la camera ha una TV, false altrimenti.
+     * @param cassaforte True se la camera ha una cassaforte, false altrimenti.
+     * @param disponibile True se la camera è disponibile, false altrimenti.
+     * @throws EccezioneCameraNonTrovata Viene lanciata se la camera specificata non è stata trovata.
+     */
+    public void restrutturaCamera(int numeroCamera, int numeroLetti, String livello, boolean tv, boolean cassaforte, boolean disponibile) throws EccezioneCameraNonTrovata 
     {
-        Camera camera = cercaCamera(numeroCamera);
-        if (camera != null) 
-        {
-            camera.modificaCamera(numeroLetti, livello, tv, cassaforte, disponibile);
-            System.out.println("Camera modificata con successo.");
-        } 
-        else 
-        {
-            System.out.println("Camera non trovata.");
-        }
+    Camera camera = cercaCamera(numeroCamera);
+    if (camera != null) 
+    {
+        camera.modificaCamera(numeroLetti, livello, tv, cassaforte, disponibile);
+        System.out.println("Camera modificata con successo.");
+    } 
+    else 
+    {
+        throw new EccezioneCameraNonTrovata();
     }
-    
-    public void modificaPrenotazione(int idPrenotazione, int numeroOspiti, float prezzo, String trattamento, String livello, String vista, String esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) 
+}
+
+    /**
+     * Modifica i dettagli di una prenotazione esistente.
+     * @param idPrenotazione L'ID della prenotazione da modificare.
+     * @param numeroOspiti Il nuovo numero di ospiti della prenotazione.
+     * @param prezzo Il nuovo prezzo della prenotazione.
+     * @param trattamento Il nuovo trattamento della prenotazione.
+     * @param livello Il nuovo livello della prenotazione.
+     * @param vista La nuova vista della prenotazione.
+     * @param esterno La nuova posizione esterna della prenotazione.
+     * @param tv True se la prenotazione ha una TV, false altrimenti.
+     * @param cassaforte True se la prenotazione ha una cassaforte, false altrimenti.
+     * @param annoIN L'anno di check-in della prenotazione.
+     * @param meseIN Il mese di check-in della prenotazione.
+     * @param giornoIN Il giorno di check-in della prenotazione.
+     * @param annoOUT L'anno di check-out della prenotazione.
+     * @param meseOUT Il mese di check-out della prenotazione.
+     * @param giornoOUT Il giorno di check-out della prenotazione.
+     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     */
+    public void modificaPrenotazione(int idPrenotazione, int numeroOspiti, float prezzo, String trattamento, String livello, String vista, String esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) throws EccezionePrenotazioneNonTrovata 
     {
         Prenotazione prenotazione = cercaPrenotazione(idPrenotazione);
         if (prenotazione != null) 
@@ -225,19 +338,25 @@ public class Gestione
         } 
         else 
         {
-            System.out.println("Prenotazione non trovata.");
+            throw new EccezionePrenotazioneNonTrovata();
         }
     }
     
-    public Prenotazione cercaPrimaPrenotazioneDaApprovare()
+    /**
+     * Cerca la prima prenotazione da approvare.
+     * @return La prima prenotazione da approvare.
+     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se non viene trovata una prenotazione da approvare.
+     */
+    public Prenotazione cercaPrimaPrenotazioneDaApprovare() throws EccezionePrenotazioneNonTrovata
     {
         for (Prenotazione prenotazione : prenotazioni) 
         {
-            if (prenotazione.getStatoPrenotazione()=="In Approvazione") 
+            if (prenotazione.getStatoPrenotazione().equals("In Approvazione")) 
                 {
                     return prenotazione;
                 }
         }
-        return null;
+        throw new EccezionePrenotazioneNonTrovata();
     }
 }
+

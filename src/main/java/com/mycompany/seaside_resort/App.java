@@ -6,6 +6,10 @@ package com.mycompany.seaside_resort;
 import java.util.ArrayList;
 import java.util.List;
 import Input.ConsoleInput;
+import eccezioni.EccezioneCameraNonTrovata;
+import eccezioni.EccezioneNumeroMaxCamereRaggiunto;
+import eccezioni.EccezioneNumeroMaxPrenotazioniRaggiunto;
+import eccezioni.EccezionePrenotazioneNonTrovata;
 import java.io.IOException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
@@ -30,8 +34,8 @@ public class App
             {
                 try 
                 {
-                    System.out.println("Benvenuto! Seleziona un'opzione:");
-                    System.out.println("Il nostro Hotel vanta ben "+gestione.getNumCamere()+" Camere con "+gestione.getNumPrenotazioni()+" Prenotazioni totali");
+                    System.out.println("\nBenvenuto! Seleziona un'opzione:");
+                    System.out.println("Il nostro Hotel vanta ben "+gestione.getNumCamere()+" Camere con "+gestione.getNumPrenotazioni()+" Prenotazioni totali\n");
                     System.out.println("1. Login");
                     System.out.println("2. Registrazione");
                     System.out.println("3. Esci");
@@ -87,7 +91,7 @@ public class App
     {
         try
         {
-            System.out.println("Effettua il login:");
+            System.out.println("\nEffettua il login:\n");
             System.out.print("Username: ");
             String username = consoleInput.readString();
             System.out.print("Password: ");
@@ -118,7 +122,7 @@ public class App
     {
         try
         {
-            System.out.println("Effettua la registrazione:");
+            System.out.println("\nEffettua la registrazione:\n");
             System.out.print("Username: ");
             String username = consoleInput.readString();
             System.out.print("Password: ");
@@ -403,6 +407,7 @@ public class App
         }
 
         System.out.print("Inserisci il livello [" + p1.getLivello() + "]: ");
+        System.out.println("Livelli accettati (standard, suite, superior, deluxe)");
         String livello = consoleInput.readString();
         if (livello.isEmpty()) 
         {
@@ -531,6 +536,10 @@ public class App
     catch (IOException ex) 
     {
         System.out.println("Impossibile leggere da tastiera!");
+    }   
+    catch (EccezionePrenotazioneNonTrovata ex) 
+    {
+         System.out.println("Errore: Prenotazione inesistente");
     }
 }
     private static void restrutturaCamera()
@@ -558,6 +567,7 @@ public class App
             }
 
             System.out.print("Inserisci il livello: ");
+            System.out.println("Livelli accettati (standard, suite, superior, deluxe)");
             String livello = consoleInput.readString();
             if (livello.isEmpty()) 
             {
@@ -605,6 +615,10 @@ public class App
         catch (IOException ex) 
         {
             System.out.println("Impossibile leggere da tastiera!");
+        } 
+        catch (EccezioneCameraNonTrovata ex) 
+        {
+            System.out.println("Errore: Camera non trovata");
         }
         
         
@@ -626,6 +640,10 @@ public class App
         catch (IOException ex) 
         {
             System.out.println("Impossibile leggere da tastiera!");
+        } 
+        catch (EccezioneCameraNonTrovata ex) 
+        {
+            System.out.println("Errore: Camera non trovata");
         }
     }
     private static void prenotaCamera(String nome) 
@@ -640,6 +658,7 @@ public class App
         String trattamento = consoleInput.readString();
         
         System.out.print("Inserisci il livello: ");
+        System.out.println("Livelli accettati (standard, suite, superior, deluxe)");
         String livello = consoleInput.readString();
         
         System.out.print("Inserisci la vista: ");
@@ -690,6 +709,10 @@ public class App
         catch (IOException ex) 
         {
             System.out.println("Impossibile leggere da tastiera!");
+        } 
+        catch (EccezioneNumeroMaxPrenotazioniRaggiunto ex) 
+        {
+            System.out.println("Purtroppo la sua prenotazione non può essere accettata in quanto è stato raggiunto il numero massimo di prenotazioni");
         }
     }
     public static float calcolaPrezzo(Prenotazione prenotazione) 
@@ -773,18 +796,21 @@ public class App
             int numeroLetti = consoleInput.readInt();
 
             System.out.print("Inserisci il livello della nuova camera: ");
+            System.out.println("standard, suite, superior, deluxe");
             String livello = consoleInput.readString();
 
             System.out.print("Inserisci la vista della nuova camera: ");
+            System.out.println("Mare, Piazzale, Piscina");
             String vista = consoleInput.readString();
 
             System.out.print("La camera possiede un Terrazzo o Giardino annesso?\n1:Terrazzo\n2:Giardino\n3:Altro");
-            int scelta;
+            int scelta=0;
             do
-            {
-                System.out.println("Inserisci il tipo di esterno");
+            {                
+                System.out.println("\nInserisci il tipo di esterno");
                 scelta=consoleInput.readInt();
-            }while (scelta!=1||scelta!=2||scelta!=3);
+                System.out.println(scelta);
+            }while (scelta<1||scelta>3);
             String esterno;
             if (scelta==1)
                 esterno = "Terrazzo";
@@ -811,6 +837,10 @@ public class App
         } catch (IllegalArgumentException ex) 
         {
             System.out.println("Errore! Valore non valido!");
+        } 
+        catch (EccezioneNumeroMaxCamereRaggiunto ex) 
+        {
+            System.out.println("Mi spiace informarla che non c'è più posto per costruire un altra camera");
         }
     }
     
@@ -831,6 +861,10 @@ public class App
         catch (NumberFormatException ex) 
         {
             System.out.println("Errore! Devi inserire un numero valido!");
+        } 
+        catch (EccezioneCameraNonTrovata ex) 
+        {
+            System.out.println("Errore: Camera non trovata");
         }
         
     }
@@ -853,6 +887,10 @@ public class App
         catch (NumberFormatException ex) 
         {
             System.out.println("Errore! Devi inserire un numero valido!");
+        } 
+        catch (EccezioneCameraNonTrovata ex) 
+        {
+            System.out.println("Errore: Camera non trovata");
         }
         
     }
@@ -972,6 +1010,10 @@ public class App
         catch (NumberFormatException ex) 
         {
             System.out.println("Errore! Devi inserire un numero valido!");
+        } 
+        catch (EccezionePrenotazioneNonTrovata ex) 
+        {
+            System.out.println("Errore prenotazione inesistente");
         }
 
     }
@@ -994,6 +1036,10 @@ public class App
         catch (NumberFormatException ex) 
         {
             System.out.println("Errore! Devi inserire un numero valido!");
+        } 
+        catch (EccezionePrenotazioneNonTrovata ex) 
+        {
+            System.out.println("Errore: Prenotazione non trovata");
         }
         
     }
@@ -1016,6 +1062,10 @@ public class App
         catch (NumberFormatException ex) 
         {
             System.out.println("Errore! Devi inserire un numero valido!");
+        } 
+        catch (EccezionePrenotazioneNonTrovata ex) 
+        {
+            System.out.println("Errore: Prenotazione non trovata");
         }
         
     }
@@ -1076,6 +1126,10 @@ public class App
         catch (NumberFormatException ex) 
         {
             System.out.println("Errore! Devi inserire un numero valido!");
+        } 
+        catch (EccezionePrenotazioneNonTrovata ex) 
+        {
+            System.out.println("Errore: Prenotazione inesistente");
         }
         
             

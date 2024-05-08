@@ -4,6 +4,8 @@
  */
 package com.mycompany.seaside_resort;
 
+import Input.ConsoleInput;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ public class Gestione
     private static final int MAX_PRENOTAZIONI = 200;
     private static int numCamere=0;
     private static int numPrenotazioni=0;
-    
+    ConsoleInput consoleInput=new ConsoleInput();
     public Gestione() 
     {
     }
@@ -102,13 +104,19 @@ public class Gestione
         return null;
     }
 //Todo: Eccezione prenotazione non trovata o prenotazione null
-    public Prenotazione cercaPrenotazioneNomeCliente(String nome)
+    public Prenotazione cercaPrenotazioneNomeCliente(String nome) throws IOException
     {
         for (Prenotazione prenotazione : prenotazioni) 
         {
             if (prenotazione.getNomeCliente()==nome) 
                 {
-                    return prenotazione;
+                    prenotazione.toString();
+                    System.out.println("è questa la prenotazione che cercavi?");
+                    
+                    boolean scelta=consoleInput.readBoolean();
+                    if (scelta)
+                        return prenotazione;                                      
+                    
                 }
         }
         return null;

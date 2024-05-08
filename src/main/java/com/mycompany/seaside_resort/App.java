@@ -31,6 +31,7 @@ public class App
                 try 
                 {
                     System.out.println("Benvenuto! Seleziona un'opzione:");
+                    System.out.println("Il nostro Hotel vanta ben "+gestione.getNumCamere()+" Camere con "+gestione.getNumPrenotazioni()+" Prenotazioni totali");
                     System.out.println("1. Login");
                     System.out.println("2. Registrazione");
                     System.out.println("3. Esci");
@@ -142,25 +143,80 @@ public class App
         try
         {
             System.out.println("Menu CEO:");
+            System.out.println("Le "+gestione.getNumCamere()+" Camere hanno ricevuto "+gestione.getNumPrenotazioni()+" Prenotazioni totali");
             System.out.println("1. Aggiungi camera");
-            System.out.println("2. Visualizza elenco prenotazioni ordinate per nome cliente");
-            System.out.println("3. Promuovi dipendente");
-            System.out.println("4. Logout");
+            System.out.println("2. Restruttura camera");
+            System.out.println("3. Blocca o Sblocca la disponibilità di una camera");
+            System.out.println("4. Rimuovi camera");
+            System.out.println("5. Cerca Camera");
+            System.out.println("6. Visualizza Camere ordinate per Livello");
+            System.out.println("7. Visualizza Camere ordinate per numero Letti");
+            System.out.println("8. Inserisci una Prenotazione");
+            System.out.println("9. Visualizza elenco prenotazioni ordinate alfabeticamente per nome cliente");
+            System.out.println("10. Visualizza elenco prenotazioni ordinate per data del checkIN");
+            System.out.println("11. Cerca Prenotazione con l'ID");
+            System.out.println("12. Cerca Prenotazione con il nome del Cliente");
+            System.out.println("13. Rimuovi Prenotazione");
+            System.out.println("14. Modifica una prenotazione");
+            System.out.println("15. Approva o rifiuta una prenotazione");
+            System.out.println("16. Promuovi dipendente");
+            System.out.println("0. Logout");
             int scelta = consoleInput.readInt();
             switch (scelta) 
             {
+            case 0:
+                utenteAttuale = null;
+                System.out.println("Logout effettuato.");
+                break;
             case 1:
                 aggiungiCamera();
                 break;
             case 2:
-                visualizzaPrenotazioniPerNomeCliente();
+                restrutturaCamera();
                 break;
             case 3:
-                promuoviDipendente();
+                bloccaSbloccaCamera();
                 break;
             case 4:
-                utenteAttuale = null;
-                System.out.println("Logout effettuato.");
+                rimuoviCamera();
+                break;
+            case 5:
+                cercaCamera();
+                break;
+            case 6:
+                visualizzaCamerePerLivello();
+                break;
+            case 7:
+                visualizzaCamerePerNumeroLetti();
+                break;
+            case 8:
+                System.out.print("Nome del cliente: ");
+                String nome = consoleInput.readString();
+                prenotaCamera(nome);
+                break;
+            case 9:
+                visualizzaPrenotazioniPerNomeCliente();
+                break;
+            case 10:
+                visualizzaPrenotazioniPerCheckIN();
+                break;
+            case 11:
+                cercaPrenotazione();
+                break;
+            case 12:
+                cercaPrenotazioneNomeCliente();
+                break;
+            case 13:
+                rimuoviPrenotazione();
+                break;
+            case 14:
+                modificaPrenotazione();
+                break;
+            case 15:
+                approvaRifiutaPrenotazione();
+                break;
+            case 16:
+                promuoviDipendente();
                 break;
             default:
                 System.out.println("Scelta non valida. Riprova.");
@@ -181,21 +237,63 @@ public class App
         try
         {
             System.out.println("Menu Dipendente:");
-            System.out.println("1. Modifica prenotazione");
-            System.out.println("2. Logout");
-            System.out.println("\nScelta: ");
-            int choice = consoleInput.readInt();
-            switch (choice) 
+            System.out.println("Le "+gestione.getNumCamere()+" Camere hanno ricevuto "+gestione.getNumPrenotazioni()+" Prenotazioni totali");
+            System.out.println("1. Blocca o Sblocca la disponibilità di una camera");
+            System.out.println("2. Cerca Camera");
+            System.out.println("3. Visualizza Camere ordinate per Livello");
+            System.out.println("4. Visualizza Camere ordinate per numero Letti");
+            System.out.println("5. Inserisci una Prenotazione");
+            System.out.println("6. Visualizza elenco prenotazioni ordinate alfabeticamente per nome cliente");
+            System.out.println("7. Visualizza elenco prenotazioni ordinate per data del checkIN");
+            System.out.println("8. Cerca Prenotazione con l'ID");
+            System.out.println("9. Cerca Prenotazione con il nome del Cliente");
+            System.out.println("10. Modifica una prenotazione");
+            System.out.println("11. Approva o rifiuta una prenotazione");
+            System.out.println("0. Logout");
+            int scelta = consoleInput.readInt();
+            switch (scelta) 
             {
-                case 1:
-                    modificaPrenotazione();
-                    break;
-                case 2:
-                    utenteAttuale = null;
-                    System.out.println("Logout effettuato.");
-                    break;
-                default:
-                    System.out.println("Scelta non valida. Riprova.");
+            case 0:
+                utenteAttuale = null;
+                System.out.println("Logout effettuato.");
+                break;
+            case 1:
+                bloccaSbloccaCamera();
+                break;
+            case 2:
+                cercaCamera();
+                break;
+            case 3:
+                visualizzaCamerePerLivello();
+                break;
+            case 4:
+                visualizzaCamerePerNumeroLetti();
+                break;
+            case 5:
+                System.out.print("Nome del cliente: ");
+                String nome = consoleInput.readString();
+                prenotaCamera(nome);
+                break;
+            case 6:
+                visualizzaPrenotazioniPerNomeCliente();
+                break;
+            case 7:
+                visualizzaPrenotazioniPerCheckIN();
+                break;
+            case 8:
+                cercaPrenotazione();
+                break;
+            case 9:
+                cercaPrenotazioneNomeCliente();
+                break;
+            case 10:
+                modificaPrenotazione();
+                break;
+            case 11:
+                approvaRifiutaPrenotazione();
+                break;
+            default:
+                System.out.println("Scelta non valida. Riprova.");
             }
         }
         catch(IOException ex)
@@ -215,20 +313,25 @@ public class App
         try
         {
             System.out.println("Menu Cliente:");
-            System.out.println("1. Prenota camera");
-            System.out.println("2. Logout");
-            int choice = consoleInput.readInt();
-            switch (choice) 
+            System.out.println("Il nostro hotel con "+gestione.getNumCamere()+" Camere e "+gestione.getNumPrenotazioni()+" Prenotazioni totali, ti può garantire una vacanza da sogno");
+            System.out.println("1. Effettua una Prenotazione");
+            System.out.println("2. Modifica una prenotazione");
+            System.out.println("0. Logout");
+            int scelta = consoleInput.readInt();
+            switch (scelta) 
             {
-                case 1:
-                    prenotaCamera();
-                    break;
-                case 2:
-                    utenteAttuale = null;
-                    System.out.println("Logout effettuato.");
-                    break;
-                default:
-                    System.out.println("Scelta non valida. Riprova.");
+            case 0:
+                utenteAttuale = null;
+                System.out.println("Logout effettuato.");
+                break;
+            case 1:
+                prenotaCamera(utenteAttuale.getUsername());
+                break;
+            case 2:
+                modificaPrenotazione();
+                break;
+            default:
+                System.out.println("Scelta non valida. Riprova.");
             }
         }
         catch(IOException ex)
@@ -242,22 +345,34 @@ public class App
         
     }
     
-    private static void modificaPrenotazione() 
+    private static void modificaPrenotazione()
     {
     try {
-        System.out.println("Modifica prenotazione:");
-        System.out.println("Inserisci l'ID o il nome della prenotazione da modificare: ");
-        String input = consoleInput.readString();
         Prenotazione p1;
-        if (input.matches("\\d+")) // Verifica che l'input contenga uno o più numeri interi
+        System.out.println("Modifica prenotazione:");
+        if (utenteAttuale.getRuolo()=="CEO"||utenteAttuale.getRuolo()=="DIPENDENTE")
         {
-            int id = Integer.parseInt(input);
-            p1 = gestione.cercaPrenotazione(id);
-        } else {
-            String nomePrenotazione = input;
+            System.out.println("Inserisci l'ID o il nome della prenotazione da modificare: ");
+            String input = consoleInput.readString();
+            
+            if (input.matches("\\d+")) // Verifica che l'input contenga uno o più numeri interi
+            {
+                int id = Integer.parseInt(input);
+                p1 = gestione.cercaPrenotazione(id);
+            } 
+            else 
+            {
+                String nomePrenotazione = input;
+                p1 = gestione.cercaPrenotazioneNomeCliente(nomePrenotazione);
+            }
+            p1.toString();
+        }
+        else 
+        {
+            String nomePrenotazione = utenteAttuale.getUsername();
             p1 = gestione.cercaPrenotazioneNomeCliente(nomePrenotazione);
         }
-        p1.toString();
+        
 
         System.out.println("Per non modificare un dato premere invio senza scrivere nulla");
 
@@ -271,18 +386,6 @@ public class App
         else 
         {
             numeroOspiti = p1.getNumeroOspiti();
-        }
-
-        System.out.print("Inserisci il prezzo [" + p1.getPrezzo() + "]: ");
-        String inputPrezzo = consoleInput.readString(); //Aquisisco  uno stringa
-        float prezzo;
-        if (!inputPrezzo.isEmpty()) //Controllo che non sia vuota
-        {
-            prezzo = Float.parseFloat(inputPrezzo); //Trasformo la stringa nel tipo di dato che mi serve
-        } 
-        else 
-        {
-            prezzo = p1.getPrezzo(); //Se vuota rimetto il vecchio valore di prenotazione
         }
 
         System.out.print("Inserisci il trattamento [" + p1.getTrattamento() + "]: ");
@@ -411,9 +514,11 @@ public class App
         {
             giornoOUT = p1.getGiornoOUT();
         }
-
-
+        
+        gestione.modificaPrenotazione(p1.getIdPrenotazione(), numeroOspiti, p1.getPrezzo(), trattamento, livello, vista, esterno, tv, cassaforte, annoIN, meseIN, giornoIN, annoOUT, meseOUT, giornoOUT);
+        float prezzo=calcolaPrezzo(gestione.cercaPrenotazione(p1.getIdPrenotazione()));
         gestione.modificaPrenotazione(p1.getIdPrenotazione(), numeroOspiti, prezzo, trattamento, livello, vista, esterno, tv, cassaforte, annoIN, meseIN, giornoIN, annoOUT, meseOUT, giornoOUT);
+        p1.toString();
         System.out.println("Prenotazione modificata");
     } 
     catch (IOException ex) 
@@ -516,14 +621,11 @@ public class App
             System.out.println("Impossibile leggere da tastiera!");
         }
     }
-    private static void prenotaCamera() 
+    private static void prenotaCamera(String nome) 
     {
     try {
         System.out.println("Prenota una camera:");
-        
-        System.out.print("Nome: ");
-        String nome = consoleInput.readString();
-        
+               
         System.out.print("Inserisci il numero di ospiti: ");
         int numeroOspiti = consoleInput.readInt();
         

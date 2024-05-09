@@ -24,6 +24,7 @@ import java.util.logging.Logger;
  * I metodi di questa classe consentono di gestire le camere e le prenotazioni del resort.
  * Gli oggetti di questa classe vengono utilizzati per eseguire operazioni come aggiungere, rimuovere, cercare e ordinare camere e prenotazioni.
  * Questa classe rappresenta il sistema di gestione del resort.
+ * @author Alessandro
  */
 public class Gestione 
 {
@@ -50,7 +51,8 @@ public class Gestione
         {
             camere.add(camera);
             numCamere++;
-            System.out.println("Camera numero"+camera.getNumeroCamera()+"Aggiunta");
+            System.out.println("Camera numero "+camera.getNumeroCamera()+" Aggiunta\n");
+            System.out.println(camera.toString());
         }
         else
             throw new EccezioneNumeroMaxCamereRaggiunto();
@@ -86,10 +88,10 @@ public class Gestione
     {
         for (Camera camera : camere) 
         {
-        if (camera.getNumeroCamera()==numero) 
-            {
-                return camera;
-            }
+            if (camera.getNumeroCamera()==numero) 
+                {
+                    return camera;
+                }
         }
         throw new EccezioneCameraNonTrovata();
     }
@@ -181,8 +183,8 @@ public class Gestione
         {
             if (prenotazione.getNomeCliente().equals(nome)) 
                 {
-                    prenotazione.toString();
-                    System.out.println("è questa la prenotazione che cercavi?");
+                    System.out.println(prenotazione.toString());
+                    System.out.println("è questa la prenotazione che cercavi? (true/false)");
                     
                     boolean scelta=consoleInput.readBoolean();
                     if (scelta)
@@ -225,6 +227,7 @@ public class Gestione
                 p1.setStatoPrenotazione(nuovoStato);
             }
             System.out.println("Stato aggiornato");
+            System.out.println(p1.toString());
         }
         else
             throw new EccezionePrenotazioneNonTrovata();

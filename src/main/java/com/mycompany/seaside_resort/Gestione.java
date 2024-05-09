@@ -6,7 +6,16 @@ package com.mycompany.seaside_resort;
 
 import Input.ConsoleInput;
 import eccezioni.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -360,6 +369,68 @@ public class Gestione
                 }
         }
         throw new EccezionePrenotazioneNonTrovata();
+    }
+    
+        public void importaCSV(String fileName) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(fileName));
+        String rigaLetta;
+        try {
+            while ((rigaLetta = reader.readLine()) != null) {
+                String[] datiCamera = rigaLetta.split(";");
+                int numeroCamera = Integer.parseInt(datiCamera[0]);
+                int numSuccessivo =Integer.parseInt(datiCamera[1]);
+                int numeroLetti = Integer.parseInt(datiCamera[2]);
+                String livello = datiCamera[3];
+                String vista = datiCamera [4];
+                String esterno = datiCamera [5];
+                boolean disponibile = Boolean.parseBoolean(datiCamera[6]);
+                boolean tv = Boolean.parseBoolean(datiCamera[7]);
+                boolean cassaforte = Boolean.parseBoolean(datiCamera[8]);
+                Camera camera = new Camera(numeroCamera, numSuccessivo, numeroLetti, livello, vista, esterno, disponibile, tv, cassaforte);
+                try 
+                {
+                    aggiungiCamera(camera);
+                } 
+                catch (EccezioneNumeroMaxCamereRaggiunto ex) 
+                {
+                    System.out.println("Numero massimo camera raggiunto");
+                }
+            }
+        } 
+        finally 
+        {
+            reader.close();
+        }
+    }
+
+    public void esportaCSV(String fileName) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+        try {
+            for (Camera camera : camere) {
+                //writer.write(camera.toCSV());
+                writer.newLine();
+            }
+        } finally {
+            writer.close();
+        }
+    }
+
+    public void salvaGestione(String fileName) throws IOException, FileNotFoundException
+    {
+       ObjectOutputStream writer=new ObjectOutputStream(new FileOutputStream(fileName));
+       writer.writeObject(this);
+       writer.flush();
+       writer.close();
+    }
+
+    public static Gestione caricaGestione(String fileName) throws IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName));
+        try {
+            Gestione gestione = (Gestione) inputStream.readObject();
+            return gestione;
+        } finally {
+            inputStream.close();
+        }
     }
 }
 

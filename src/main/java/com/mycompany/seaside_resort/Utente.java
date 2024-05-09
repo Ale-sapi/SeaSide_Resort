@@ -4,13 +4,15 @@
  */
 package com.mycompany.seaside_resort;
 
+import java.io.Serializable;
+
 /**
  * Classe che rappresenta un utente del sistema.
  * Contiene le informazioni di base dell'utente come username, password e ruolo.
  * 
  * @author Alessandro
  */
-public class Utente 
+public class Utente implements Serializable
 {
     private String username; // Username dell'utente
     private String password; // Password dell'utente

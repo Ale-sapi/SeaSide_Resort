@@ -15,7 +15,9 @@ import java.io.IOException;
 import java.time.temporal.ChronoUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.time.LocalDate;
 import Menu.Menu;
+import java.time.DateTimeException;
 
 /**
  * Classe principale dell'applicazione Seaside Resort.
@@ -59,6 +61,7 @@ public class App {
             "Modifica una prenotazione", 
             "Approva o rifiuta una prenotazione",
             "Promuovi dipendente",
+            
     });
     /**
         * Menu per utenti DIPENDENTE.
@@ -578,6 +581,10 @@ private static void modificaPrenotazione() {
     {
         System.out.println("Errore: Prenotazione inesistente");
     }
+    catch (DateTimeException ex)
+    {
+        System.out.println("Errore: Data inserita non valida");
+    }
 }
 
 /**
@@ -821,10 +828,18 @@ private static void prenotaCamera(String nome) {
         gestione.Prenota(p1);
         System.out.println(p1.toString());
         System.out.println("Prenotazione inviata con successo");
-    } catch (IOException ex) {
+    } 
+    catch (IOException ex) 
+    {
         System.out.println("Impossibile leggere da tastiera!");
-    } catch (EccezioneNumeroMaxPrenotazioniRaggiunto ex) {
+    } 
+    catch (EccezioneNumeroMaxPrenotazioniRaggiunto ex) 
+    {
         System.out.println("Purtroppo la sua prenotazione non può essere accettata in quanto è stato raggiunto il numero massimo di prenotazioni");
+    }
+    catch (DateTimeException ex)
+    {
+        System.out.println("Errore: Data inserita non valida");
     }
 }
 

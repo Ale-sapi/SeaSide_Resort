@@ -53,7 +53,31 @@ public class Camera
         this.tv = tv;
         this.cassaforte = cassaforte;
     }
-
+    /**
+     * Costruttore della classe Camera per Copiare.
+     * 
+     * @param numeroCamera Numero camera.
+     * @param numeroSuccessivo Numero camera successivo.
+     * @param numeroLetti Numero di letti nella camera.
+     * @param livello Livello della camera.
+     * @param vista Vista dalla camera.
+     * @param Esterno Tipo di esterno associato alla camera (Terrazzo o Giardino).
+     * @param disponibile Disponibilità della camera.
+     * @param tv Presenza di una TV nella camera.
+     * @param cassaforte Presenza di una cassaforte nella camera.
+     */
+    public Camera(int numeroCamera,int numeroSuccessivo, int numeroLetti, String livello, String vista, String Esterno, boolean disponibile, boolean tv, boolean cassaforte) 
+    {
+        this.numeroCamera = numeroCamera;
+        numsuccessivo=numeroSuccessivo;
+        this.numeroLetti = numeroLetti;
+        this.livello = livello;
+        this.vista = vista;
+        this.Esterno = Esterno;
+        this.tv = tv;
+        this.cassaforte = cassaforte;
+        
+    }
     /**
      * Costruttore di copia della classe Camera.
      * 

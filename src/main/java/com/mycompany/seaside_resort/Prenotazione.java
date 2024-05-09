@@ -4,6 +4,8 @@
  */
 package com.mycompany.seaside_resort;
 
+import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 /**
  * Questa classe rappresenta una prenotazione presso il resort. Ogni prenotazione ha un identificatore univoco,
@@ -12,7 +14,7 @@ import java.time.LocalDate;
  * la presenza di una cassaforte, la data di check-in e la data di check-out.
  * @author Alessandro
  */
-public class Prenotazione 
+public class Prenotazione implements Serializable
 {
     /**
      * Identificatore univoco della prenotazione.
@@ -136,29 +138,30 @@ public class Prenotazione
      * @param meseOUT Mese di check-out della prenotazione.
      * @param giornoOUT Giorno di check-out della prenotazione.
      */
-    public Prenotazione(int numeroOspiti, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)
+    public Prenotazione(int numeroOspiti, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)throws DateTimeException
     {
-        this.idPrenotazione = numsuccessivo;
-        numsuccessivo++;
-        this.numeroOspiti = numeroOspiti;
-        this.prezzo = prezzo;
-        this.nomeCliente = nomeCliente;
-        this.trattamento = trattamento;
-        this.statoPrenotazione = "In Approvazione";
-        this.livello = livello;
-        this.vista = vista;
-        this.Esterno = Esterno;
-        this.tv = tv;
-        this.cassaforte = cassaforte;
-        this.annoIN = annoIN;
-        this.meseIN = meseIN;
-        this.giornoIN = giornoIN;
-        checkIN=LocalDate.of(annoIN, meseIN, giornoIN);
-        this.annoOUT = annoOUT;
-        this.meseOUT = meseOUT;
-        this.giornoOUT = giornoOUT;
-        this.numeroCamera=0;
-        checkOUT=LocalDate.of(annoOUT, meseOUT, giornoOUT);
+            this.idPrenotazione = numsuccessivo;
+            numsuccessivo++;
+            this.numeroOspiti = numeroOspiti;
+            this.prezzo = prezzo;
+            this.nomeCliente = nomeCliente;
+            this.trattamento = trattamento;
+            this.statoPrenotazione = "In Approvazione";
+            this.livello = livello;
+            this.vista = vista;
+            this.Esterno = Esterno;
+            this.tv = tv;
+            this.cassaforte = cassaforte;
+            this.annoIN = annoIN;
+            this.meseIN = meseIN;
+            this.giornoIN = giornoIN;
+            checkIN=LocalDate.of(annoIN, meseIN, giornoIN);
+            this.annoOUT = annoOUT;
+            this.meseOUT = meseOUT;
+            this.giornoOUT = giornoOUT;
+            this.numeroCamera=0;
+            checkOUT=LocalDate.of(annoOUT, meseOUT, giornoOUT);
+        
     }
 
     /**

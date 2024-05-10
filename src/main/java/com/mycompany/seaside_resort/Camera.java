@@ -119,6 +119,17 @@ public class Camera
      * 
      * @return Numero della camera.
      */
+    public int getNumSuccessivo() 
+    {
+        return numsuccessivo;
+    }
+    
+    
+    /**
+     * Restituisce il numero della camera.
+     * 
+     * @return Numero della camera.
+     */
     public int getNumeroCamera() 
     {
         return numeroCamera;

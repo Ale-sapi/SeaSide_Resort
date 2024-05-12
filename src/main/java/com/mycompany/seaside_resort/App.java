@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.time.LocalDate;
 import Menu.Menu;
+import gestioneFile.FileException;
 import java.time.DateTimeException;
 
 /**
@@ -61,6 +62,14 @@ public class App {
             "Modifica una prenotazione", 
             "Approva o rifiuta una prenotazione",
             "Promuovi dipendente",
+            "Esporta Camere CSV",
+            "Esporta Prenotazioni CSV",
+            "Esporta Utenti CSV",
+            "Importa Camere CSV",
+            "Importa Prenotazioni CSV",
+            "Importa Utenti CSV",
+            "Salva su file binario",
+            "Carica da file binario"
             
     });
     /**
@@ -235,6 +244,114 @@ public class App {
                 case 16:
                     promuoviDipendente();
                     break;
+                case 17:
+                    String fileName="camere.csv";
+                    try 
+                    {
+                        gestione.esportaCamereCSV(fileName);
+                        System.out.println("Esportazione avvenuta con successo!");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                    catch (FileException ex) 
+                    {
+                        System.out.println("Erorre file aperto in lettura!");
+                    }
+                    break;
+                case 18:
+                    fileName="prenotazioni.csv";
+                    try 
+                    {
+                        gestione.esportaPrenotazioniCSV(fileName);
+                        System.out.println("Esportazione avvenuta con successo!");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                    catch (FileException ex) 
+                    {
+                        System.out.println("Erorre file aperto in lettura!");
+                    }
+                    break;
+                case 19:
+                    fileName="utenti.csv";
+                    try 
+                    {
+                        gestione.esportaUtentiCSV(fileName,utenti);
+                        System.out.println("Esportazione avvenuta con successo!");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                    catch (FileException ex) 
+                    {
+                        System.out.println("Erorre file aperto in lettura!");
+                    }
+                    break;
+                case 20:              
+                    try 
+                    {
+                        fileName="camere.csv";
+                        gestione.importaCamereCSV(fileName);
+                        System.out.println("Importazione avvenuta con successo.");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                case 21:              
+                    try 
+                    {
+                        fileName="prenotazioni.csv";
+                        gestione.importaPrenotazioniCSV(fileName);
+                        System.out.println("Importazione avvenuta con successo.");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                case 22:              
+                    try 
+                    {
+                        fileName="utenti.csv";
+                        gestione.importaUtenteCSV(fileName, utenti);
+                        System.out.println("Importazione avvenuta con successo.");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere dal file");
+                    } 
+                case 23:
+                    fileName="gestione.bin";
+                    try 
+                    {
+                        gestione.salvaGestione(fileName);
+                        System.out.println("Salvataggio avvenuto correttamente");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile salvare su file");
+                    }
+                case 24:
+                    fileName="gestione.bin";
+                    try 
+                    {
+                        gestione.caricaGestione(fileName);
+                        System.out.println("Caricamento avvenuto con successo");
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("Impossibile leggere da file");
+                    } 
+                    catch (ClassNotFoundException ex)
+                    {
+                        System.out.println("Impossibile leggere i dati dello scaffale");
+                    }
+
                 default:
                     System.out.println("Scelta non valida. Riprova.");
             }

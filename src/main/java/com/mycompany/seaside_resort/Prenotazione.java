@@ -164,6 +164,31 @@ public class Prenotazione implements Serializable
         
     }
 
+    public Prenotazione(int idPrenotazione, int numsuccessivo, int numeroOspiti, float prezzo, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)throws DateTimeException
+    {
+            this.idPrenotazione = idPrenotazione;
+            this.numsuccessivo = numsuccessivo;
+            this.numeroOspiti = numeroOspiti;
+            this.prezzo = prezzo;
+            this.nomeCliente = nomeCliente;
+            this.trattamento = trattamento;
+            this.statoPrenotazione = "In Approvazione";
+            this.livello = livello;
+            this.vista = vista;
+            this.Esterno = Esterno;
+            this.tv = tv;
+            this.cassaforte = cassaforte;
+            this.annoIN = annoIN;
+            this.meseIN = meseIN;
+            this.giornoIN = giornoIN;
+            checkIN=LocalDate.of(annoIN, meseIN, giornoIN);
+            this.annoOUT = annoOUT;
+            this.meseOUT = meseOUT;
+            this.giornoOUT = giornoOUT;
+            this.numeroCamera=0;
+            checkOUT=LocalDate.of(annoOUT, meseOUT, giornoOUT);
+        
+    }
     /**
      * Restituisce l'identificatore univoco della prenotazione.
      * @return Identificatore univoco della prenotazione.
@@ -172,6 +197,9 @@ public class Prenotazione implements Serializable
         return idPrenotazione;
     }
 
+    public int getNumSuccessivo() {
+        return numsuccessivo;
+    }
     /**
      * Restituisce il numero della camera associata alla prenotazione.
      * @return Numero della camera associata alla prenotazione.

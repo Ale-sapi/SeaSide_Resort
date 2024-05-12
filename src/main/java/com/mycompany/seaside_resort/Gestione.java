@@ -243,24 +243,40 @@ public class Gestione
         else
             throw new EccezionePrenotazioneNonTrovata();
     }
-
+    
+    /**
+     * Restituisce il numero delle camera presenti.
+     * 
+     * @return Numero delle camere.
+     */
     public static int getNumCamere() {
         return numCamere;
     }
 
+    /**
+     * Restituisce il numero delle prenotazioni presenti.
+     * 
+     * @return Numero delle prenotazioni.
+     */
     public static int getNumPrenotazioni() {
         return numPrenotazioni;
     }
     
-    // Metodo per ordinare le prenotazioni per data di check-in
+    /***
+     * Metodo per ordinare le prenotazioni per data di check-in
+     * @return prenotazioni ordinate per data di check-in
+     */
     public List<Prenotazione> ordinaPrenotazioniPerCheckIn() 
     {
         List<Prenotazione> copiaPrenotazioni = new ArrayList<>(prenotazioni);
         Collections.sort(copiaPrenotazioni, Comparator.comparing(prenotazione -> prenotazione.getCheckIN()));
         return copiaPrenotazioni;
     }
-    
-    // Metodo per ordinare le prenotazioni per nome del cliente
+        
+    /***
+     * Metodo per ordinare le prenotazioni per nome del cliente
+     * @return prenotazioni ordinate per nome del cliente
+     */
     public List<Prenotazione> ordinaPrenotazioniPerNomeCliente() 
     {
         List<Prenotazione> copiaPrenotazioni = new ArrayList<>(prenotazioni);
@@ -268,7 +284,10 @@ public class Gestione
         return copiaPrenotazioni;
     }
     
-    // Metodo per ordinare le camere per livello
+    /***
+     * Metodo per ordinare le camere per livello
+     * @return camere ordinate per livello
+     */
     public List<Camera> ordinaCamerePerLivello() 
     {
         List<Camera> copiaCamere = new ArrayList<>(camere);
@@ -276,7 +295,10 @@ public class Gestione
         return copiaCamere;
     }
 
-    // Metodo per ordinare le camere per numero di letti
+    /***
+     * Metodo per ordinare le camere per numero di letti
+     * @return camere ordinate per numero di letti
+     */
     public List<Camera> ordinaCamerePerNumeroLetti() 
     {
         List<Camera> copiaCamere = new ArrayList<>(camere);
@@ -373,6 +395,12 @@ public class Gestione
         throw new EccezionePrenotazioneNonTrovata();
     }
     
+    /**
+     * Importa le camere da un file CSV specificato.
+     *
+     * @param fileName il nome del file CSV da cui importare le camere
+     * @throws IOException se si verifica un errore di I/O durante la lettura del file
+     */
     public void importaCamereCSV(String fileName) throws IOException 
     {
         TextFile f1=new TextFile(fileName, 'R');
@@ -415,28 +443,167 @@ public class Gestione
         }
     }
 
+    /**
+     * Importa le prenotazioni da un file CSV specificato.
+     *
+     * @param fileName il nome del file CSV da cui importare le prenotazioni
+     * @throws IOException se si verifica un errore di I/O durante la lettura del file
+     */
+    public void importaPrenotazioniCSV(String fileName) throws IOException
+    {
+        TextFile f1=new TextFile(fileName, 'R');
+        String rigaLetta;
+        String[] datiPrenotazione;
+        int idPrenotazione, numsuccessivo, numeroOspiti, numeroCamera, annoIN, meseIN, giornoIN, annoOUT, meseOUT, giornoOUT;
+        float prezzo;
+        String nomeCliente, trattamento, statoPrenotazione, livello, vista, Esterno;
+        Boolean tv, cassaforte;
+        Prenotazione prenotazione;
+        try 
+        {
+            while (true) 
+            {
+                rigaLetta=f1.fromFile();
+                datiPrenotazione = rigaLetta.split(";");
+                idPrenotazione = Integer.parseInt(datiPrenotazione[0]);
+                numsuccessivo = Integer.parseInt(datiPrenotazione[1]);
+                numeroOspiti = Integer.parseInt(datiPrenotazione[2]);
+                prezzo = Float.parseFloat(datiPrenotazione[3]);
+                nomeCliente = datiPrenotazione[4];
+                trattamento = datiPrenotazione[5];
+                statoPrenotazione = datiPrenotazione[6];
+                livello = datiPrenotazione[7];
+                vista = datiPrenotazione[8];
+                Esterno = datiPrenotazione[9];
+                tv = Boolean.parseBoolean(datiPrenotazione[10]);
+                cassaforte = Boolean.parseBoolean(datiPrenotazione[11]);
+                annoIN = Integer.parseInt(datiPrenotazione[12]);
+                meseIN = Integer.parseInt(datiPrenotazione[13]);
+                giornoIN = Integer.parseInt(datiPrenotazione[13]);
+                annoOUT = Integer.parseInt(datiPrenotazione[13]);
+                meseOUT = Integer.parseInt(datiPrenotazione[13]);
+                giornoOUT = Integer.parseInt(datiPrenotazione[13]);
+                prenotazione = new Prenotazione(idPrenotazione, numsuccessivo, numeroOspiti, prezzo, nomeCliente, trattamento, livello, vista, Esterno, tv, cassaforte, annoIN, meseIN, giornoIN, annoOUT, meseOUT, giornoOUT);
+                try
+                {
+                    Prenota(prenotazione);
+                } 
+                catch (EccezioneNumeroMaxPrenotazioniRaggiunto ex) 
+                {
+                    System.out.println("Numero massimo prenotazioni raggiunto");
+                }
+            }
+        }
+        catch (FileException ex) 
+        { 
+            //E' finito il file di testo
+            f1.close();
+        }
+            
+    }
         
+    /**
+     * Importa gli utenti da un file CSV specificato.
+     *
+     * @param fileName il nome del file CSV da cui importare gli utenti
+     * @param utenti la lista in cui aggiungere gli utenti importati
+     * @throws IOException se si verifica un errore di I/O durante la lettura del file
+     */
+    public void importaUtenteCSV (String fileName, List<Utente> utenti) throws IOException
+    {
+        TextFile f1 = new TextFile(fileName, 'R');
+        String rigaLetta;
+        String[] datiUtente;
+        String username, password, ruolo;
+        Utente utente;
+        try {
+                while (true)
+                {
+
+                    rigaLetta=f1.fromFile();
+                    datiUtente = rigaLetta.split(";");
+                    username = datiUtente[0];
+                    password = datiUtente[1];
+                    ruolo = datiUtente[2];
+                    utente = new Utente(username, password, ruolo);
+                    utenti.add(utente);
+                }
+            }
+        catch (FileException ex) 
+            {
+                //E' finito il file di testo
+                f1.close();
+            }
+    }
     
-    public void esportaCamereCSV(String fileName) throws IOException 
+    /**
+     * Esporta le camere in un file CSV specificato.
+     *
+     * @param fileName il nome del file CSV in cui esportare le camere
+     * @throws IOException se si verifica un errore di I/O durante la scrittura del file
+     * @throws FileException se si verifica un errore generico di file, nel nostro caso quando finisce
+     */
+    public void esportaCamereCSV(String fileName) throws IOException, FileException 
     {
         TextFile f1=new TextFile(fileName,'W');
         String datiCamera;
        
         for (Camera camera : camere) 
         {
-            try 
-            {
                 datiCamera=camera.getNumeroCamera()+";"+camera.getNumSuccessivo()+";"+camera.getNumeroLetti()+";"+camera.getLivello()+";"+camera.getVista()+";"+camera.getEsterno()+";"+camera.getDisponibilita()+";"+camera.isTv()+";"+camera.isCassaforte();
                 f1.toFile(datiCamera);
-            } 
-            catch (FileException ex) 
-            {
-                Logger.getLogger(Gestione.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
         }
         f1.close();
     }
 
+    /**
+     * Esporta le prenotazioni in un file CSV.
+     *
+     * @param fileName Nome del file CSV in cui esportare le prenotazioni.
+     * @throws IOException     Se si verifica un errore di I/O durante la scrittura del file.
+     * @throws FileException   Se si verifica un errore generico di file, nel nostro caso quando finisce
+     */
+    public void esportaPrenotazioniCSV(String fileName) throws IOException, FileException 
+    {
+        TextFile f1=new TextFile(fileName,'W');
+        String datiPrenotazione;
+       
+            for (Prenotazione prenotazione : prenotazioni) 
+            {
+                datiPrenotazione=(prenotazione.getIdPrenotazione()+";"+prenotazione.getNumSuccessivo()+";"+prenotazione.getNumeroOspiti()+";"+prenotazione.getPrezzo()+";"+prenotazione.getNomeCliente()+";"+prenotazione.getTrattamento()+";"+prenotazione.getLivello()+";"+prenotazione.getVista()+";"+prenotazione.getEsterno()+";"+prenotazione.isTv()+";"+prenotazione.isCassaforte()+";"+prenotazione.getAnnoIN()+";"+prenotazione.getMeseIN()+";"+prenotazione.getGiornoIN()+";"+prenotazione.getAnnoOUT()+";"+prenotazione.getMeseOUT()+";"+prenotazione.getGiornoOUT());
+                f1.toFile(datiPrenotazione);
+            }
+        f1.close();
+    }
+    
+    /**
+     * Esporta gli utenti in un file CSV.
+     *
+     * @param fileName Nome del file CSV in cui esportare gli utenti.
+     * @param utenti   Lista degli utenti da esportare.
+     * @throws IOException     Se si verifica un errore di I/O durante la scrittura del file.
+     * @throws FileException   Se si verifica un errore durante la chiusura del file.
+     */
+    public void esportaUtentiCSV(String fileName, List<Utente> utenti) throws IOException, FileException 
+    {
+        TextFile f1=new TextFile(fileName,'W');
+        String datiUtente;
+            for (Utente utente : utenti) 
+            {
+                datiUtente=(utente.getUsername()+";"+utente.getPassword()+";"+utente.getRuolo());
+                f1.toFile(datiUtente);
+            }
+        f1.close();
+    }
+    
+    /**
+     * Salva lo stato della gestione in un file.
+     *
+     * @param fileName Nome del file in cui salvare lo stato della gestione.
+     * @throws IOException     Se si verifica un errore di I/O durante la scrittura del file.
+     * @throws FileNotFoundException Se il file specificato non viene trovato.
+     */
     public void salvaGestione(String fileName) throws IOException, FileNotFoundException
     {
        ObjectOutputStream writer=new ObjectOutputStream(new FileOutputStream(fileName));
@@ -445,6 +612,15 @@ public class Gestione
        writer.close();
     }
 
+    /**
+     * Carica lo stato della gestione da un file.
+     *
+     * @param fileName Nome del file da cui caricare lo stato della gestione.
+     * @return Oggetto di tipo Gestione contenente lo stato caricato.
+     * @throws FileNotFoundException Se il file specificato non viene trovato.
+     * @throws IOException     Se si verifica un errore di I/O durante la lettura del file.
+     * @throws ClassNotFoundException Se la classe caricata non viene trovata.
+     */
     public static Gestione caricaGestione(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException 
     {
         Gestione gestione;

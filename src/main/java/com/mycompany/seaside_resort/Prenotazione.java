@@ -137,6 +137,7 @@ public class Prenotazione implements Serializable
      * @param annoOUT Anno di check-out della prenotazione.
      * @param meseOUT Mese di check-out della prenotazione.
      * @param giornoOUT Giorno di check-out della prenotazione.
+     * @throws DateTimeException Sollevata se la data inserita non è conforme
      */
     public Prenotazione(int numeroOspiti, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)throws DateTimeException
     {
@@ -164,6 +165,27 @@ public class Prenotazione implements Serializable
         
     }
 
+    /**
+     * Costruttore della classe Prenotazione manuale, utilizzato per importare da CSV
+     * @param idPrenotazione Identificatore univoco della prenotazione.
+     * @param numsuccessivo Variabile statica per tenere traccia del numero successivo di prenotazione.
+     * @param numeroOspiti Numero di ospiti della prenotazione.
+     * @param prezzo Prezzo della camera
+     * @param nomeCliente Nome del cliente che ha effettuato la prenotazione.
+     * @param trattamento Trattamento scelto per la prenotazione.
+     * @param livello Livello della camera prenotata.
+     * @param vista Vista dalla camera prenotata.
+     * @param Esterno Tipo di esterno associato alla camera prenotata (Terrazzo o Giardino).
+     * @param tv Indica se la camera prenotata include una TV.
+     * @param cassaforte Indica se la camera prenotata include una cassaforte.
+     * @param annoIN Anno di check-in della prenotazione.
+     * @param meseIN Mese di check-in della prenotazione.
+     * @param giornoIN Giorno di check-in della prenotazione.
+     * @param annoOUT Anno di check-out della prenotazione.
+     * @param meseOUT Mese di check-out della prenotazione.
+     * @param giornoOUT Giorno di check-out della prenotazione.
+     * @throws DateTimeException Sollevata se la data inserita non è conforme
+     */
     public Prenotazione(int idPrenotazione, int numsuccessivo, int numeroOspiti, float prezzo, String nomeCliente, String trattamento, String livello, String vista, String Esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)throws DateTimeException
     {
             this.idPrenotazione = idPrenotazione;
@@ -196,7 +218,10 @@ public class Prenotazione implements Serializable
     public int getIdPrenotazione() {
         return idPrenotazione;
     }
-
+    /***
+     * Restituisce il numero della camera successiva
+     * @return il numero della camera successiva
+     */
     public int getNumSuccessivo() {
         return numsuccessivo;
     }

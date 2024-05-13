@@ -11,8 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * 
- * @author Studente
  * Rapprensenta un menu costituito da un elenco di voci. 
  * Il metodo elencoVoci è un array di String cdove ogni elemento
  * costituisce una delle voci.
@@ -21,11 +19,12 @@ import java.util.logging.Logger;
  * L'utente può scegliere il numero corrispondente ad una delle voci.
  * Esempio:
  *      (0)Esci
-    *   (1)Fai questo..
-    *   (2)Fai quello..
-*       Scegli-->
-* 
-* L'utente sceglie una di queste voci (0,1,o 2...).
+ *      (1)Fai questo..
+ *      (2)Fai quello..
+ *      Scegli-->
+ * 
+ * L'utente sceglie una di queste voci (0,1,o 2...). 
+ * @author Studente
  */
 public class Menu 
 {
@@ -97,6 +96,9 @@ public class Menu
         return scelta;      
     }
     
+    /***
+     * Metodo che consente di visualizzare il menù
+     */
     public void visualizzaMenu()
     {
         for(int i=0;i<numeroVoci;i++)

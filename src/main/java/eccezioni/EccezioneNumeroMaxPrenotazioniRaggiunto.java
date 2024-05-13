@@ -5,7 +5,7 @@
 package eccezioni;
 
 /**
- *
+ * Eccezione sollevata quando viene raggiunto il numero massimo di prenotazioni.
  * @author Alessandro
  */
 public class EccezioneNumeroMaxPrenotazioniRaggiunto extends Exception

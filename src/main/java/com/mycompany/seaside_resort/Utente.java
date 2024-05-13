@@ -14,9 +14,18 @@ import java.io.Serializable;
  */
 public class Utente implements Serializable
 {
-    private String username; // Username dell'utente
-    private String password; // Password dell'utente
-    private String ruolo;    // Ruolo dell'utente (es. "amministratore", "utente normale")
+    /***
+     * Username dell'utente
+     */
+    private String username;
+    /***
+     * Password dell'utente
+     */
+    private String password;
+    /***
+     * Ruolo dell'utente (es. "CEO", "utente", "Dipendente")
+     */
+    private String ruolo;
 
     /**
      * Costruttore della classe Utente.

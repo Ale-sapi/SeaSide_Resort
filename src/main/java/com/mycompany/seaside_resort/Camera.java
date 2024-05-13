@@ -330,8 +330,8 @@ public class Camera
     
     /***
      * Ridefinito il metodo equals per confrontare due camere
-     * @param object
-     * @return 
+     * @param object Oggetto da confrontare, nel nostro caso una camera
+     * @return true (Se i due oggetti sono uguali) or false (Se i due oggetti sono diversi)
      */
     @Override 
     public boolean equals(Object object)

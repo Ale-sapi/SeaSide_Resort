@@ -5,7 +5,7 @@
 package eccezioni;
 
 /**
- *
+ * Eccezione sollevata quando viene raggiunto il numero massimo di camere.
  * @author Alessandro
  */
 public class EccezioneNumeroMaxCamereRaggiunto extends Exception

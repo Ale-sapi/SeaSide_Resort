@@ -13,7 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
+ * Classe utilizzata per la lettura e scrittura su file
  * @author Alessandro
  */
 public class TextFile 
@@ -22,7 +22,14 @@ public class TextFile
     private BufferedReader reader;
     private BufferedWriter writer;
     
-    
+    /**
+    * Costruttore per creare un oggetto TextFile per la lettura o scrittura di un file.
+    * 
+    * @param fileName Nome del file
+    * @param mode Modalità di apertura del file ('R' per lettura, 'W' per scrittura)
+    * @throws FileNotFoundException Se il file specificato non viene trovato
+    * @throws IOException Se si verifica un errore di I/O durante l'apertura del file
+    */
     public TextFile(String fileName, char mode) throws FileNotFoundException, IOException
     {
         this.mode='R';
@@ -42,6 +49,15 @@ public class TextFile
     
     }
     
+    /**
+    * Costruttore per creare un oggetto TextFile per la lettura o scrittura di un file.
+    * 
+    * @param fileName Nome del file
+    * @param mode Modalità di apertura del file ('R' per lettura, 'W' per scrittura)
+    * @param append True se si desidera aggiungere al file, false altrimenti
+    * @throws FileNotFoundException Se il file specificato non viene trovato
+    * @throws IOException Se si verifica un errore di I/O durante l'apertura del file
+    */
     public TextFile(String fileName, char mode, boolean append) throws FileNotFoundException, IOException
     {
         
@@ -62,6 +78,13 @@ public class TextFile
     
     }
     
+    /**
+    * Scrive una linea nel file aperto in modalità scrittura.
+    * 
+    * @param line La linea da scrivere nel file
+    * @throws FileException Se il file è aperto in modalità lettura
+    * @throws IOException Se si verifica un errore di I/O durante la scrittura nel file
+    */
     public void toFile(String line) throws FileException, IOException
     {
         if (mode=='R')
@@ -73,7 +96,13 @@ public class TextFile
             writer.newLine();
     }
     
-    
+    /**
+    * Legge una linea dal file aperto in modalità lettura.
+    * 
+    * @return La linea letta dal file
+    * @throws FileException Se il file è aperto in modalità scrittura o se si raggiunge la fine del file
+    * @throws IOException Se si verifica un errore di I/O durante la lettura dal file
+    */
     public String fromFile() throws FileException, IOException
     {
         String line;
@@ -89,6 +118,11 @@ public class TextFile
         return line;
     }
     
+    /**
+    * Chiude il file aperto.
+    * 
+    * @throws IOException Se si verifica un errore durante la chiusura del file
+    */
     public void close() throws IOException
     {
         if(mode=='R')

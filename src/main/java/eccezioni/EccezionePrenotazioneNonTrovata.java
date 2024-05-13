@@ -5,7 +5,7 @@
 package eccezioni;
 
 /**
- *
+ * Eccezione lanciata quando una prenotazione non viene trovata.
  * @author Alessandro
  */
 public class EccezionePrenotazioneNonTrovata extends Exception

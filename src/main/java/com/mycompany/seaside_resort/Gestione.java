@@ -44,6 +44,10 @@ public class Gestione
     private static int numCamere=0;
     private static int numPrenotazioni=0;
     ConsoleInput consoleInput=new ConsoleInput();
+    
+    /***
+     * Costruttore
+     */
     public Gestione() 
     {
     }
@@ -54,7 +58,7 @@ public class Gestione
     /**
      * Aggiunge una nuova camera al resort.
      * @param camera La camera da aggiungere.
-     * @throws EccezioneNumeroMaxCamereRaggiunto Viene lanciata se il numero massimo di camere è stato raggiunto.
+     * @throws EccezioneNumeroMaxCamereRaggiunto Viene sollevata se il numero massimo di camere è stato raggiunto.
      */
     public void aggiungiCamera(Camera camera) throws EccezioneNumeroMaxCamereRaggiunto
     {
@@ -72,7 +76,7 @@ public class Gestione
     /**
      * Rimuove una camera dal resort.
      * @param numCamera Il numero della camera da rimuovere.
-     * @throws EccezioneCameraNonTrovata Viene lanciata se la camera specificata non è stata trovata.
+     * @throws EccezioneCameraNonTrovata Viene sollevata se la camera specificata non è stata trovata.
      */
     public void rimuoviCamera (int numCamera) throws EccezioneCameraNonTrovata
     {
@@ -93,7 +97,7 @@ public class Gestione
      * Cerca una camera per numero.
      * @param numero Il numero della camera da cercare.
      * @return La camera corrispondente al numero specificato.
-     * @throws EccezioneCameraNonTrovata Viene lanciata se la camera specificata non è stata trovata.
+     * @throws EccezioneCameraNonTrovata Viene sollevata se la camera specificata non è stata trovata.
      */
     public Camera cercaCamera(int numero) throws EccezioneCameraNonTrovata
     {
@@ -111,7 +115,7 @@ public class Gestione
      * Cerca la prima camera disponibile per una prenotazione.
      * @param prenotazione La prenotazione per cui cercare una camera disponibile.
      * @return La prima camera disponibile per la prenotazione specificata.
-     * @throws EccezioneCameraNonTrovata Viene lanciata se non viene trovata una camera disponibile per la prenotazione.
+     * @throws EccezioneCameraNonTrovata Viene sollevata se non viene trovata una camera disponibile per la prenotazione.
      */
     public Camera cercaPrimaCameraDisponibile(Prenotazione prenotazione) throws EccezioneCameraNonTrovata
     {
@@ -129,7 +133,7 @@ public class Gestione
     /**
      * Prenota una nuova prenotazione.
      * @param prenotazione La prenotazione da aggiungere.
-     * @throws EccezioneNumeroMaxPrenotazioniRaggiunto Viene lanciata se il numero massimo di prenotazioni è stato raggiunto.
+     * @throws EccezioneNumeroMaxPrenotazioniRaggiunto Viene sollevata se il numero massimo di prenotazioni è stato raggiunto.
      */
     public void Prenota(Prenotazione prenotazione) throws EccezioneNumeroMaxPrenotazioniRaggiunto
     {
@@ -146,7 +150,7 @@ public class Gestione
     /**
      * Rimuove una prenotazione dal resort.
      * @param idPrenotazione L'ID della prenotazione da rimuovere.
-     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     * @throws EccezionePrenotazioneNonTrovata Viene sollevata se la prenotazione specificata non è stata trovata.
      */
     public void rimuoviPrenotazione (int idPrenotazione) throws EccezionePrenotazioneNonTrovata
     {
@@ -167,7 +171,7 @@ public class Gestione
      * Cerca una prenotazione per ID.
      * @param Id L'ID della prenotazione da cercare.
      * @return La prenotazione corrispondente all'ID specificato.
-     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     * @throws EccezionePrenotazioneNonTrovata Viene sollevata se la prenotazione specificata non è stata trovata.
      */
     public Prenotazione cercaPrenotazione(int Id) throws EccezionePrenotazioneNonTrovata
     {
@@ -185,8 +189,8 @@ public class Gestione
      * Cerca una prenotazione per nome cliente.
      * @param nome Il nome del cliente associato alla prenotazione da cercare.
      * @return La prenotazione corrispondente al nome cliente specificato.
-     * @throws IOException Viene lanciata se si verifica un errore di input/output.
-     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     * @throws IOException Viene sollevata se si verifica un errore di input/output.
+     * @throws EccezionePrenotazioneNonTrovata Viene sollevata se la prenotazione specificata non è stata trovata.
      */
     public Prenotazione cercaPrenotazioneNomeCliente(String nome) throws IOException, EccezionePrenotazioneNonTrovata
     {
@@ -211,8 +215,7 @@ public class Gestione
      * @param id L'ID della prenotazione da approvare o rifiutare.
      * @param nuovoStato Il nuovo stato della prenotazione.
      * @param approvato True se la prenotazione è approvata, false altrimenti.
-     * @throws EccezioneCameraNonTrovata Viene lanciata se non viene trovata una camera per la prenotazione approvata.
-     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     * @throws EccezionePrenotazioneNonTrovata Viene sollevata se la prenotazione specificata non è stata trovata.
      */
     public void approvaRifiutaPrenotazione(int id, String nuovoStato, boolean approvato) throws EccezionePrenotazioneNonTrovata
     {
@@ -314,7 +317,7 @@ public class Gestione
      * @param tv True se la camera ha una TV, false altrimenti.
      * @param cassaforte True se la camera ha una cassaforte, false altrimenti.
      * @param disponibile True se la camera è disponibile, false altrimenti.
-     * @throws EccezioneCameraNonTrovata Viene lanciata se la camera specificata non è stata trovata.
+     * @throws EccezioneCameraNonTrovata Viene sollevata se la camera specificata non è stata trovata.
      */
     public void restrutturaCamera(int numeroCamera, int numeroLetti, String livello, boolean tv, boolean cassaforte, boolean disponibile) throws EccezioneCameraNonTrovata 
     {
@@ -347,7 +350,7 @@ public class Gestione
      * @param annoOUT L'anno di check-out della prenotazione.
      * @param meseOUT Il mese di check-out della prenotazione.
      * @param giornoOUT Il giorno di check-out della prenotazione.
-     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se la prenotazione specificata non è stata trovata.
+     * @throws EccezionePrenotazioneNonTrovata Viene sollevata se la prenotazione specificata non è stata trovata.
      */
     public void modificaPrenotazione(int idPrenotazione, int numeroOspiti, float prezzo, String trattamento, String livello, String vista, String esterno, boolean tv, boolean cassaforte, int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) throws EccezionePrenotazioneNonTrovata 
     {
@@ -381,7 +384,7 @@ public class Gestione
     /**
      * Cerca la prima prenotazione da approvare.
      * @return La prima prenotazione da approvare.
-     * @throws EccezionePrenotazioneNonTrovata Viene lanciata se non viene trovata una prenotazione da approvare.
+     * @throws EccezionePrenotazioneNonTrovata Viene sollevata se non viene trovata una prenotazione da approvare.
      */
     public Prenotazione cercaPrimaPrenotazioneDaApprovare() throws EccezionePrenotazioneNonTrovata
     {

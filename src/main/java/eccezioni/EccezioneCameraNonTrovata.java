@@ -5,7 +5,7 @@
 package eccezioni;
 
 /**
- *
+ * Eccezione sollevata quando una camera non viene trovata.
  * @author Alessandro
  */
 public class EccezioneCameraNonTrovata extends Exception 

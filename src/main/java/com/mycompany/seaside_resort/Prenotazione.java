@@ -205,7 +205,7 @@ public class Prenotazione implements Serializable
      * @return Numero della camera associata alla prenotazione.
      */
     public int getNumeroCamera() {
-        return numeroOspiti;
+        return numeroCamera;
     }
 
     /**

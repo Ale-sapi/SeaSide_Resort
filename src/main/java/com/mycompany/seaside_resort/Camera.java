@@ -21,7 +21,7 @@ public class Camera
     ArrayList<Prenotazione>prenotazioni=new ArrayList<>();;
     private final int numeroCamera;
     private static int numsuccessivo=1;
-    private int numeroLetti;
+    int numeroLetti;
     private String livello;
     private String vista;
     private String Esterno;//Terrazzo o Giardino
@@ -50,6 +50,7 @@ public class Camera
         this.livello = livello;
         this.vista = vista;
         this.Esterno = Esterno;
+        this.disponibile = disponibile;
         this.tv = tv;
         this.cassaforte = cassaforte;
     }
@@ -74,6 +75,7 @@ public class Camera
         this.livello = livello;
         this.vista = vista;
         this.Esterno = Esterno;
+        this.disponibile = disponibile;
         this.tv = tv;
         this.cassaforte = cassaforte;
         
@@ -326,5 +328,20 @@ public class Camera
         return "Camera{" + "numeroCamera=" + numeroCamera + ", numeroLetti=" + numeroLetti + ", livello=" + livello + ", vista=" + vista + ", Esterno=" + Esterno + ", disponibile=" + disponibile + ", tv=" + tv + ", cassaforte=" + cassaforte + '}'+"\n";
     }
     
+    /***
+     * Ridefinito il metodo equals per confrontare due camere
+     * @param object
+     * @return 
+     */
+    @Override 
+    public boolean equals(Object object)
+    {
+        Camera camera;
+        camera=(Camera)object;
+        if (camera.getDisponibilita()==getDisponibilita()&&camera.getEsterno().equalsIgnoreCase(getEsterno())&&camera.getNumeroLetti()==getNumeroLetti()&&camera.getLivello().equalsIgnoreCase(getLivello())&&camera.getVista().equalsIgnoreCase(getVista())&&camera.isTv()==isTv()&&camera.isCassaforte()==isCassaforte())
+            return true;
+        else
+            return false;
+    }  
 }
 

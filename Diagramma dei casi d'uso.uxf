@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>608</x>
+      <y>124</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Effettua una Prenotazione
+bg=#66cdaa</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>120</y>
+      <w>144</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>bg=#9acd32
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLInterface</id>
+    <coordinates>
+      <x>544</x>
+      <y>404</y>
+      <w>40</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Interface
+bg=blue
+--
+LogIN
+Registrazione</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>552</x>
+      <y>144</y>
+      <w>24</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>	Cliente
+bg=black</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>608</x>
+      <y>164</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Modifica Prenotazione
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>132</y>
+      <w>56</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;70.0;120.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>156</y>
+      <w>56</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;120.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>800</x>
+      <y>272</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Modifica Prenotazione
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>772</x>
+      <y>236</y>
+      <w>164</w>
+      <h>328</h>
+    </coordinates>
+    <panel_attributes>bg=888870000
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>656</x>
+      <y>396</y>
+      <w>40</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>	Dipendente
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>308</y>
+      <w>136</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;260.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>280</y>
+      <w>136</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;330.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>800</x>
+      <y>300</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Blocca o Sblocca la 
+disponibilità di una camera
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>336</y>
+      <w>136</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;190.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>800</x>
+      <y>328</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Cerca Camera
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>364</y>
+      <w>140</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;120.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>356</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Visualizza Camere 
+ordinate per Livello
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>392</y>
+      <w>140</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;50.0;330.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>384</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Visualizza Camere 
+ordinate per numero Letti
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>408</y>
+      <w>140</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;330.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>800</x>
+      <y>244</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Inserisci una Prenotazione
+bg=#66cdaa</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>412</y>
+      <w>100</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Visualizza elenco prenotazioni 
+ordinate alfabeticamente 
+per nome cliente
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>408</y>
+      <w>140</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;330.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>448</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Visualizza elenco prenotazioni 
+ordinate per data del checkIN
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>408</y>
+      <w>140</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;330.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>476</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Cerca Prenotazione con l'ID
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>408</y>
+      <w>140</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;330.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>504</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Cerca Prenotazione con il 
+nome del Cliente
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>408</y>
+      <w>140</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;330.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>672</x>
+      <y>252</y>
+      <w>136</w>
+      <h>168</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;400.0;320.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>804</x>
+      <y>532</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Approva o rifiuta una prenotazione
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>300</x>
+      <y>36</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Modifica Prenotazione
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>268</x>
+      <y>0</y>
+      <w>164</w>
+      <h>692</h>
+    </coordinates>
+    <panel_attributes>bg=1000
+layer=-1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLActor</id>
+    <coordinates>
+      <x>492</x>
+      <y>396</y>
+      <w>28</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>	CEO</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>300</x>
+      <y>64</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Blocca o Sblocca la 
+disponibilità di una camera
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>300</x>
+      <y>92</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Cerca Camera
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>120</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Visualizza Camere 
+ordinate per Livello
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>148</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Visualizza Camere 
+ordinate per numero Letti
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>300</x>
+      <y>8</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Inserisci una Prenotazione
+bg=#66cdaa</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>176</y>
+      <w>100</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>Visualizza elenco prenotazioni 
+ordinate alfabeticamente 
+per nome cliente
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>212</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Visualizza elenco prenotazioni 
+ordinate per data del checkIN
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>240</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Cerca Prenotazione con l'ID
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>268</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Cerca Prenotazione con il 
+nome del Cliente
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>296</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Approva o rifiuta una prenotazione
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>160</y>
+      <w>12</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;630.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>404</y>
+      <w>124</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>504</x>
+      <y>404</y>
+      <w>68</w>
+      <h>16</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>324</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Aggiungi camera
+bg=#66cdaa</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>352</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Restruttura camera 
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>380</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Rimuovi camera
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>464</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Esporta Camere CSV
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>436</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Promuovi dipendente
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>408</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Rimuovi Prenotazione
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>632</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Salva su file binario
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>604</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Importa Utenti CSV
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>576</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Importa Prenotazioni CSV
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>548</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Importa Camere CSV
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>492</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Esporta Prenotazioni CSV
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>520</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Esporta Utenti CSV
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>304</x>
+      <y>660</y>
+      <w>100</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Carica da file binario
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>16</y>
+      <w>116</w>
+      <h>404</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;270.0;990.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>44</y>
+      <w>116</w>
+      <h>376</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;270.0;920.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>72</y>
+      <w>116</w>
+      <h>348</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;270.0;850.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>100</y>
+      <w>116</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;270.0;780.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>128</y>
+      <w>112</w>
+      <h>292</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;710.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>156</y>
+      <w>112</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;640.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>188</y>
+      <w>112</w>
+      <h>232</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;560.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>220</y>
+      <w>112</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;480.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>248</y>
+      <w>112</w>
+      <h>172</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>276</y>
+      <w>112</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;340.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>304</y>
+      <w>112</w>
+      <h>116</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;270.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>332</y>
+      <w>112</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>360</y>
+      <w>112</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>388</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;260.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;30.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;100.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;170.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;240.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;310.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;380.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>188</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;450.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>216</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;520.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>244</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;590.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>408</y>
+      <w>112</w>
+      <h>272</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;660.0;260.0;10.0</additional_attributes>
+  </element>
+</diagram>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>714</x>
+      <y>0</y>
+      <w>402</w>
+      <h>576</h>
+    </coordinates>
+    <panel_attributes>*_Camera_*
+--
+_Attributi_
+- prenotazioni: ArrayList&lt;Prenotazione&gt;
+- numeroCamera: int
+- numsuccessivo: int (static)
+- numeroLetti: int
+- livello: String
+- vista: String
+- Esterno: String
+- disponibile: boolean
+- tv: boolean
+- cassaforte: boolean
+--
+_Metodi_
++ Prenotazione(int idPrenotazione, int numsuccessivo, int numeroOspiti, 
+                          float prezzo, String nomeCliente, String trattamento, String livello, 
+                          String vista, String Esterno, boolean tv, boolean cassaforte, 
+                          int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)
++ Prenotazione(int numeroOspiti, String nomeCliente, String trattamento, 
+                          String livello, String vista, String Esterno, boolean tv, boolean cassaforte, 
+                          int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT)
++ getAnnoIN() : int
++ getAnnoOUT() : int
++ getCheckIN() : LocalDate
++ getCheckOUT() : LocalDate
++ getEsterno() : String
++ getGiornoIN() : int
++ getGiornoOUT() : int
++ getIdPrenotazione() : int
++ getLivello() : String
++ getMeseIN() : int
++ getMeseOUT() : int
++ getNomeCliente() : String
++ getNumeroCamera() : int
++ getNumeroOspiti() : int
++ getNumSuccessivo() : int
++ getPrezzo() : float
++ getStatoPrenotazione() : String
++ getTrattamento() : String
++ getVista() : String
++ isCassaforte() : boolean
++ isTv() : boolean
++ setAnnoIN(int annoIN) : void
++ setAnnoOUT(int annoOUT) : void
++ setCassaforte(boolean cassaforte) : void
++ setCheckIN(LocalDate checkIN) : void
++ setCheckOUT(LocalDate checkOUT) : void
++ setEsterno(String Esterno) : void
++ setGiornoIN(int giornoIN) : void
++ setGiornoOUT(int giornoOUT) : void
++ setLivello(String livello) : void
++ setMeseIN(int meseIN) : void
++ setMeseOUT(int meseOUT) : void
++ setNomeCliente(String nomeCliente) : void
++ setNumeroCamera(int numeroCamera) : void
++ setNumeroOspiti(int numeroOspiti) : void
++ setPrezzo(float prezzo) : void
++ setStatoPrenotazione(String statoPrenotazione) : void
++ setTrattamento(String trattamento) : void
++ setTv(boolean tv) : void
++ setVista(String vista) : void
++ toString() : String
+fg=white
+bg=magenta</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>594</y>
+      <w>828</w>
+      <h>372</h>
+    </coordinates>
+    <panel_attributes>*_Gestione_*
+--
+_Attributi_
+- MAX_CAMERE: int (static final)
+- MAX_PRENOTAZIONI: int (static final)
+- numCamere: int (static)
+- numPrenotazioni: int (static)
+- camere: ArrayList&lt;Camera&gt;
+- prenotazioni: ArrayList&lt;Prenotazione&gt;
+--
+_Metodi_
++ Gestione()
++ aggiungiCamera(Camera camera) : void
++ approvaRifiutaPrenotazione(int id, String nuovoStato, boolean approvato) : void
++ caricaGestione(String fileName) : static Gestione
++ cercaCamera(int numero) : Camera
++ cercaPrenotazione(int Id) : Prenotazione
++ cercaPrenotazioneNomeCliente(String nome) : Prenotazione
++ cercaPrimaCameraDisponibile(Prenotazione prenotazione) : Camera
++ cercaPrimaPrenotazioneDaApprovare() : Prenotazione
++ esportaCamereCSV(String fileName) : void
++ esportaPrenotazioniCSV(String fileName) : void
++ esportaUtentiCSV(String fileName, List&lt;Utente&gt; utenti) : void
++ getNumCamere() : static int
++ getNumPrenotazioni() : static int
++ importaCamereCSV(String fileName) : void
++ importaPrenotazioniCSV(String fileName) : void
++ importaUtenteCSV(String fileName, List&lt;Utente&gt; utenti) : void
++ modificaPrenotazione(int idPrenotazione, int numeroOspiti, float prezzo, String trattamento, String livello, String vista, String esterno, boolean tv, boolean cassaforte, 
+                                       int annoIN, int meseIN, int giornoIN, int annoOUT, int meseOUT, int giornoOUT) : void
++ ordinaCamerePerLivello() : List&lt;Camera&gt;
++ ordinaCamerePerNumeroLetti() : List&lt;Camera&gt;
++ ordinaPrenotazioniPerCheckIn() : List&lt;Prenotazione&gt;
++ ordinaPrenotazioniPerNomeCliente() : List&lt;Prenotazione&gt;
++ Prenota(Prenotazione prenotazione) : void
++ restrutturaCamera(int numeroCamera, int numeroLetti, String livello, boolean tv, boolean cassaforte, boolean disponibile) : void
++ rimuoviCamera(int numCamera) : void
++ rimuoviPrenotazione(int idPrenotazione) : void
++ salvaGestione(String fileName) : void
+
+fg=white
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>0</y>
+      <w>402</w>
+      <h>408</h>
+    </coordinates>
+    <panel_attributes>*_Camera_*
+--
+_Attributi_
+- prenotazioni: ArrayList&lt;Prenotazione&gt;
+- numeroCamera: int
+- numsuccessivo: int (static)
+- numeroLetti: int
+- livello: String
+- vista: String
+- Esterno: String
+- disponibile: boolean
+- tv: boolean
+- cassaforte: boolean
+--
+_Metodi_
++ Camera(numeroLetti:int, livello:String, vista:String, 
+                  Esterno:String, disponibile:boolean, tv:boolean, cassaforte:boolean)
++ Camera(numeroCamera:int, numeroSuccessivo:int, numeroLetti:int, livello:String, vista:String, 
+                  Esterno:String, disponibile:boolean, tv:boolean, cassaforte:boolean)
++ Camera(camera:Camera)
++ modificaCamera(numeroLetti:int, livello:String, tv:boolean, cassaforte:boolean, disponibile:boolean):void
++ getNumSuccessivo():int
++ getNumeroCamera():int
++ getNumeroLetti():int
++ getDisponibilita():boolean
++ setNumeroLetti(numeroLetti:int):void
++ getLivello():String
++ setLivello(livello:String):void
++ getVista():String
++ setVista(vista:String):void
++ getEsterno():String
++ setEsterno(Esterno:String):void
++ isDisponibile(dataInizio:LocalDate, dataFine:LocalDate):boolean
++ aggiungiPrenotazione(prenotazione:Prenotazione):void
++ getprenotazioni():ArrayList&lt;Prenotazione&gt;
++ isTv():boolean
++ setTv(tv:boolean):void
++ setDisponibilita(disponibile:boolean):void
++ isCassaforte():boolean
++ setCassaforte(cassaforte:boolean):void
++ toString():String
++ equals(object:Object):boolean
+fg=white
+bg=blue</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>432</y>
+      <w>402</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>*_Utente_*
+--
+_Attributi_
+- username: String
+- password: String
+- ruolo: String
+--
+_Metodi_
++ Utente(String username, String password, String ruolo)
++ getPassword() : String
++ getRuolo() : String
++ getUsername() : String
++ setPassword(String password) : void
++ setRuolo(String ruolo) : void
++ setUsername(String username) : void
++ toString() : String
+
+fg=white
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
